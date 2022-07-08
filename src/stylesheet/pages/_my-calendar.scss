@@ -1,0 +1,54 @@
+.my-calendar-container {
+  .list-group-item {
+    padding: 0
+  }
+  .schedule-item {
+    display: flex;
+    .schedule-datetime,
+    .schedule-detail {
+      @include pxRem(padding, 25);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .schedule-datetime {
+      @include pxRem(min-width, 300);
+      align-items: center;
+      border-right: 1px solid map-get($color, bg-light-secondary);
+      .schedule-date {
+        @include pxRem(border-radius, 100);
+        @include pxRem(padding, 5 15);
+        @include pxRem(margin-bottom, 5);
+        color: map-get($color, "white");
+        background-color: map-get($color, primary);
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+    .schedule-detail {
+      .schedule-title {
+        @include pxRem(font-size, map-get($font-size, md));
+        .lock-icon {
+          @include pxRem(margin-right, 10);
+          color: map-get($color, warning-a);
+          opacity: 0.5;
+          &.is-locked {
+            opacity: 1;
+          }
+        }
+      }
+      .schedule-link {
+        display: flex;
+        align-items: center;
+        font-style: italic;
+      }
+      .icon-copy {
+        @include pxRem(margin-left, 15);
+        @include pxRem(font-size, map-get($font-size, sm));
+        display: inline-flex;
+        color: rgba(0, 0, 0, 0.54);
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,323 @@
+.grid-calendar {
+  .calendar-toolbar {
+    @include flex-center-between();
+    @include pxRem(margin-bottom, 15);
+    .calendar-toolbar-left {
+      @include flex-center-y();
+      .date-range-label {
+        @include pxRem(font-size, map-get($font-size, md));
+        @include pxRem(width, 150);
+        font-weight: 700;
+      }
+    }
+    .calendar-toolbar-right {
+      display: flex;
+      .switch-buttons {
+        @include pxRem(margin-right, 10);
+
+      }
+    }
+  }
+  .rbc-calendar {
+    height: calc(100vh - 160px);
+    .rbc-time-header-gutter {
+      @include flex-centered();
+      width: 100px !important;
+      max-width: 100px !important;
+    }
+    .rbc-time-view {
+      @include pxRem(border-radius, 4);
+      border: 1px solid map-get($color, bg-light-secondary);
+    }
+    .rbc-time-content > * + * > *,
+    .rbc-time-header-content,
+    .rbc-header + .rbc-header,
+    .rbc-day-bg + .rbc-day-bg {
+      border-left: 1px solid map-get($color, bg-light-secondary);
+    }
+    .rbc-time-header-cell,
+    .rbc-header {
+      @include pxRem(min-height, 65);
+      @include pxRem(height, 65);
+    }
+    .rbc-header,
+    .rbc-timeslot-group {
+      border-bottom: 1px solid map-get($color, bg-light-secondary);
+    }
+    .rbc-overflowing {
+      border-right: none;
+    }
+    .rbc-today {
+      background-color: map-get($color, bg-light-primary);
+      .event-content-inner {
+        border: 1px solid #7269EF;
+        background-color: #FFFFFF;
+        border-left-width: 2px;
+      }
+      .date {
+        background-color: map-get($color, primary);
+        color: map-get($color, "white");
+      }
+    }
+    .calendar-head {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+      .date-of-week-name {
+        font-weight: 400;
+      }
+      .date {
+        @include pxRem(font-size, 20);
+        @include pxRem(width, 65);
+        @include pxRem(height, 28);
+        @include pxRem(border-radius, 100);
+      }
+    }
+    .rbc-time-slot {
+      @include pxRem(min-height, 45);
+      border-top: none;
+    }
+    .rbc-time-content {
+      border-top: 1px solid map-get($color, bg-light-secondary);
+    }
+    .rbc-time-gutter {
+      width: 100px;
+      .rbc-time-slot {
+        @include pxRem(min-height, 45);
+        text-transform: lowercase;
+        text-align: right;
+      }
+      .rbc-timeslot-group {
+        @include pxRem(min-width, 80);
+      }
+    }
+    .rbc-event {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      color: map-get($color, blue-dark);
+      .tooltip-wrapper {
+        height: auto;
+      }
+      .event-content-inner {
+        @include pxRem(padding, 2 5);
+        border-left: 2px solid map-get($color, primary);
+        height: 100%;
+        .event-title {
+          @include pxRem(height, 20);
+          @include ellipsis-special();
+          @include flex-center-y();
+          display: block;
+          max-width: 100%;
+          margin-bottom: 0;
+        }
+      }
+      .rbc-event-label {
+        display: none;
+      }
+      .rbc-event-content {
+        background-color: map-get($color, bg-light-primary);
+        .event-detail {
+          height: 100%;
+        }
+        .tooltip-tip {
+          white-space: pre-wrap;
+        }
+        .event-title,
+        .event-duration {
+          @include pxRem(font-size, map-get($font-size, xs));
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+  .rbc-current-time-indicator {
+    background: map-get($color, danger);
+    &::before {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: map-get($color, danger);
+      position: relative;
+      top: -5px;
+      left: 0;
+    }
+  }
+}
+
+.agenda-container {
+  @include pxRem(border-radius, map-get($border-radius, sm));
+  display: flex;
+  position: relative;
+  border: 1px solid map-get($color, bg-light-secondary);
+  overflow: hidden;
+  &.no-events {
+    .timezone {
+      border-bottom: none;
+    }
+  }
+  .agenda-date-pinned {
+    @include pxRem(left, 102);
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: calc(100% - 102px);
+    background-color: map-get($color, "white");
+    border-left: 1px solid map-get($color, bg-light-secondary);
+    border-bottom: 1px solid map-get($color, bg-light-secondary);
+  }
+  .agenda-timezone {
+    border-right: 0;
+  }
+  .timezone {
+    @include pxRem(padding, 13 0);
+    @include pxRem(width, 102);
+    border-bottom: 1px solid map-get($color, bg-light-secondary);
+    text-align: center;
+  }
+  .event-date {
+    @include pxRem(padding, 8 24);
+    @include flex-center-y();
+    color: map-get($color, heading);
+    font-weight: 600;
+    .date {
+      @include flex-centered();
+      @include pxRem(width, 32);
+      @include pxRem(height, 32);
+      @include pxRem(font-size, map-get($font-size, md));
+      border-radius: 50%;
+      line-height: 1;
+    }
+  }
+}
+.agenda {
+  width: 100%;
+  max-height: calc(100vh - 215px);
+  border-left: 1px solid map-get($color, bg-light-secondary);
+  overflow: auto;
+  .no-event {
+    height: 100%;
+  }
+  .rbc-today {
+    .event-date {
+      background-color: inherit;
+    }
+  }
+  .event-wrapper {
+    border-bottom: 1px solid map-get($color, bg-light-secondary);
+    &:last-child {
+      border-bottom: none;
+      .event-detail {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .event-detail {
+      .event-content-inner {
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+  .event-title {
+    font-weight: 600;
+  }
+  .event-detail {
+    @include pxRem(padding, 8 24);
+    @include flex-center-y();
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    &:last-child {
+      @include pxRem(margin-bottom, 8)
+    }
+    &:hover,
+    &.event-selected {
+      background-color: map-get($color, grey-e);
+      border-left-color: map-get($color, primary);
+    }
+    .event-participants {
+      @include pxRem(max-width, 150);
+      width: 100%;
+    }
+    .extended-members {
+      @include pxRem(font-size, 12);
+      position: static;
+      transform: none;
+      color: map-get($color, secondary);
+      .avatar {
+        @include pxRem(width, 16);
+        @include pxRem(height, 16);
+        @include pxRem(min-width, 16);
+        @include pxRem(min-height, 16);
+        @include pxRem(margin-left, -4);
+        box-shadow: none;
+        border: none;
+      }
+      .count-number {
+        font-weight: 400;
+      }
+    }
+  }
+  .event-content-inner {
+    @include pxRem(padding-right, 90);
+    @include flex-center-y();
+    flex-direction: row-reverse;
+    max-width: calc(100% - 150px);
+    cursor: pointer;
+    .event-title {
+      @include pxRem(font-size, map-get($font-size, normal));
+      @include pxRem(line-height, 20);
+      @include pxRem(width, 400);
+      @include ellipsis-special(1);
+      margin-bottom: 0;
+    }
+    .event-duration {
+      @include pxRem(margin-right, 40);
+      @include pxRem(min-width, 200);
+      @include pxRem(padding-left, 14);
+      white-space: nowrap;
+      position: relative;
+      align-self: flex-start;
+      &::before {
+        @include pxRem(width, 6);
+        @include pxRem(height, 6);
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background-color: map-get($color, primary);
+        border-radius: 50%;
+      }
+    }
+    .tooltip-tip {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+}
+
+@include respond-below(large-max) {
+  .agenda {
+    .event-content-inner {
+      @include pxRem(padding-right, 20);
+      max-width: calc(100% - 120px);
+      .event-duration {
+        @include pxRem(min-width, 180);
+      }
+      .event-title {
+        @include pxRem(width, 330);
+      }
+    }
+    .event-detail {
+      .event-participants {
+        @include pxRem(max-width, 120);
+      }
+    }
+  }
+}

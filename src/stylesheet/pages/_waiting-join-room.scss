@@ -1,0 +1,92 @@
+.full-content-wrapper {
+  @include flex-centered();
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: calc(22px + #{map-get($layout, office-nav)});
+  width: calc(100% - #{map-get($layout, office-nav) - 22px});
+  background-color: map-get($color, "white");
+  height: 100vh;
+  .main-content {
+    @include flex-centered();
+    flex-direction: column;
+    flex-grow: 1;
+    &.main-content-lg {
+      width: 80%;
+      .page-heading {
+        @include pxRem(width, map-get($container-breakpoints, large));
+        max-width: 100%;
+        text-align: center;
+      }
+      .main-content-inner {
+        @include pxRem(width, map-get($container-breakpoints, large));
+        max-width: 100%;
+        margin: 15px auto;
+      }
+    }
+  }
+  .loader {
+    @include pxRem(margin-bottom, 30);
+    position: static;
+    width: auto;
+    height: auto;
+  }
+  .main-msg {
+    @include pxRem(font-size, 18);
+    @include pxRem(margin-bottom, 30);
+    text-align: center;
+    color: map-get($color, heading);
+  }
+  .image-container {
+    @include pxRem(max-width, 445);
+  }
+  .msg-back-to-workspace {
+    @include pxRem(margin-bottom, 80);
+    text-align: center;
+  }
+}
+
+.pre-join-settings {
+  .room-members {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  .extended-members {
+    position: static;
+    transform: none;
+    display: block !important;
+  }
+  .device-selection-icon {
+    @include pxRem(width, 50);
+    @include pxRem(height, 50);
+  }
+  .device-selection-input {
+    @include pxRem(height, 50);
+    @include pxRem(font-size, map-get($font-size, sm));
+    @include pxRem(padding, 0 10 0 60);
+  }
+  .useful-tips-wrapper {
+    @include pxRem(max-width, 740);
+    margin: 0 auto 50px;
+    .webcam-video {
+      @include pxRem(width, 270);
+      @include pxRem(height, 270);
+    }
+  }
+}
+
+@include respond-below(small) {
+  .full-content-wrapper {
+    @include pxRem(padding, 0 20);
+    @include pxRem(top, map-get($layout, header-mobile));
+    left: 0;
+    width: 100%;
+    height: calc(100vh - #{map-get($layout, header-mobile)});
+    .msg-back-to-workspace {
+      @include pxRem(margin-bottom, 20);
+    }
+  }
+}

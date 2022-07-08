@@ -1,0 +1,24 @@
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  .nav-item {
+    @include pxRem(margin-right, 25);
+  }
+  .nav-link {
+    transition: all 0.3s ease;
+    height: auto;
+    &.active {
+      color: map-get($color, primary);
+    }
+  }
+}
+.tab-content {
+  .tab-pane {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    .loader {
+      max-height: 100%;
+    }
+  }
+}

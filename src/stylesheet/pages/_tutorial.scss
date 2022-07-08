@@ -1,0 +1,28 @@
+.dialog-tutorial {
+  .modal-content {
+    @include pxRem(padding, 48 0 0);
+    position: relative;
+  }
+  .modal-body {
+    @include pxRem(margin, 0 64);
+  }
+  .tutorial-container {
+    .slider-container {
+      @include pxRem(min-height, 354);
+      position: relative;
+    }
+    .btn-close {
+      @include button-variant(icon, "white", "", "danger", bg-light-primary);
+      @include pxRem(right, 7);
+      @include pxRem(top, 7);
+      @include pxRem(height, 42);
+      position: absolute;
+      min-width: auto;
+    }
+    .slider-caption {
+      @include flex-centered();
+      @include pxRem(padding, 15 0);
+      min-height: calc(354px - 258px);
+    }
+  }
+}

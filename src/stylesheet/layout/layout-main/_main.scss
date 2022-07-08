@@ -1,0 +1,26 @@
+.main-container {
+  @include pxRem(margin-left, $side-bar-width);
+  width: calc(100vw - #{$side-bar-width});
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  .page-content {
+    @include pxRem(padding-top, map-get($layout , header));
+  }
+}
+
+@include respond-between(large, large-pro) {
+  .main-container {
+    width: calc(100vw - #{map-get($layout, office-nav-tablet)} - #{map-get($layout, room-nav-tablet)});
+    margin-left: calc(#{map-get($layout, office-nav-tablet)} + #{map-get($layout, room-nav-tablet)});
+  }
+}
+
+@include respond-below(medium) {
+  .main-container {
+    @include pxRem(padding-top, map-get($layout, header-mobile));
+    width: 100%;
+    height: webkit-fill-available;
+    margin: 0;
+  }
+}

@@ -1,0 +1,201 @@
+.office-home-container {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .room-box-layout .room-box-left .room-content {
+    @include pxRem(margin-bottom, 30);
+  }
+}
+.room-box-layout {
+  display: flex;
+  min-height: 100vh;
+  .room-box-left {
+    @include pxRem(min-width, 845);
+    width: calc(100% - 300px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    height: 100vh;
+    top: 0;
+    left: #{$side-bar-width};
+    .room-box {
+      height: 100%;
+    }
+    .room-content {
+      height: 100%;
+    }
+  }
+  .room-box-right {
+    @include pxRem(min-width, 300);
+    @include pxRem(width, 300);
+    flex-grow: 0;
+    flex-shrink: 1;
+    height: 100vh;
+    overflow: hidden;
+    .room-box {
+      position: relative;
+      .popover-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+      &::before,
+      &::after {
+        content: "";
+        @include pxRem(width, 10);
+        background: map-get($color, bg-light-secondary);
+        position: absolute;
+        left: 0;
+      }
+      &::before {
+        top: 0;
+        height: 40%;
+      }
+      &::after {
+        @include pxRem(height, 55);
+        bottom: 0;
+      }
+      &:first-child {
+        height: 50%;
+        border-bottom: 5px solid map-get($color, bg-light-secondary);
+      }
+      &:last-child() {
+        height: 50%;
+        border-top: 5px solid map-get($color, bg-light-secondary);
+        &::before {
+          height: 55%;
+          @include pxRem(height, 55);
+        }
+        &::after {
+          @include pxRem(bottom, -10);
+          height: 45%;
+        }
+      }
+    }
+  }
+  .room-box {
+    @include flex-centered();
+  }
+  .room-content {
+    @include pxRem(padding, 0 40);
+  }
+  .room-toolbar {
+    max-width: 90%;
+  }
+}
+
+@include respond-between(large, large-pro) {
+  .office-home-container {
+    .room-box-left {
+      min-width: auto;
+      width: 70%;
+      .room-content {
+        @include pxRem(padding, 20 8 0);
+      }
+    }
+    .room-box-right {
+      min-width: auto;
+      width: 30%;
+      .room-lounge {
+        @include scale(.8);
+        .workstation {
+          &.vertical {
+            &:first-child {
+              width: 40%;
+            }
+            &:last-child {
+              width: 37%;
+            }
+            .desk {
+              display: none;
+            }
+          }
+        }
+        .room-tree {
+          display: none;
+        }
+      }
+    }
+    .workstation {
+      padding: 0;
+    }
+  }
+  .workspace-container {
+    .workspace-item {
+      @include scale(.9);
+      &:nth-child(2) {
+        transform: scale(1.5);
+      }
+    }
+  }
+  .room-box-layout {
+    .room-box-right {
+      .room-box {
+        @include pxRem(border-width, 5);
+        &::before, &::after {
+          @include pxRem(width, 5);
+        }
+        &:first-child {
+          @include pxRem(border-top-width, 5);
+        }
+        &:last-child {
+          &::after {
+            bottom: 0;
+          }
+        }
+      }
+      .room-lounge {
+        @include scale(.8);
+        .workstation {
+          &.vertical {
+            &:first-child {
+              width: 40%;
+            }
+            &:last-child {
+              width: 37%;
+            }
+            .desk {
+              display: none;
+            }
+          }
+        }
+        .room-tree {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@include respond-below(medium) {
+  .office-home-container {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    .room-box-left,
+    .room-box-layout {
+      height: 100%;
+      min-height: auto;
+    }
+    .room-box-left {
+      @include pxRem(padding, 20 15 80);
+      min-width: auto;
+      flex-basis: auto;
+      width: 100%;
+      height: calc(100vh - #{map-get($layout, room-title-mobile)} - #{map-get($layout, footer)});
+      .workstation-wrapper {
+        min-height: auto;
+      }
+    }
+    .room-content {
+      padding: 0;
+    }
+    .room-toolbar-inner {
+      @include pxRem(padding, 0 55);
+    }
+    .room-toolbar {
+      max-width: 100%;
+    }
+  }
+}

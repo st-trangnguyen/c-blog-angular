@@ -1,0 +1,71 @@
+.room-link-box {
+  @include pxRem(height, 50);
+  @include pxRem(border-radius, map-get($border-radius, md));
+  display: flex;
+  border: 1px solid map-get($color, grey-f);
+  overflow: hidden;
+
+  .room-link, .btn-copy {
+    @include flex-center-y();
+    height: 100%;
+  }
+
+  .room-link {
+    @include pxRem(margin, 0 20);
+    flex-basis: 90%;
+    max-width: 90%;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    @media (max-width: 1024px) {
+      overflow: scroll;
+    }
+  }
+
+  .btn-copy {
+    border-radius: 0;
+    flex-basis: 10%;
+    background: map-get($color, primary);
+    color: map-get($color, "white");
+  }
+}
+
+.pre-join-page {
+  @include flex-center-y();
+  flex-direction: column;
+  width: 100%;
+  .page-content {
+    @include flex-column-centered();
+  }
+}
+
+.workspace-logo-big {
+  @include pxRem(width, 144);
+  @include pxRem(height, 144);
+}
+
+.wait-content-wrapper {
+  @include pxRem(margin, 50 0 140);
+  text-align: center;
+  .message {
+    @include pxRem(line-height, 32);
+    @include pxRem(margin-bottom, 15);
+  }
+}
+
+@include respond-below(medium) {
+  .guest-page-wrapper {
+    h3 {
+      font-size: 20px;
+    }
+  }
+  .wait-content-wrapper {
+    @include pxRem(margin, 20 0 70);
+    text-align: center;
+    .message {
+      @include pxRem(font-size, 16);
+      @include pxRem(line-height, 22);
+    }
+  }
+}

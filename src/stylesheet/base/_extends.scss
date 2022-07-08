@@ -1,12 +1,7 @@
 %clr {
   &::after {
-    content: '';
+    content: "";
     display: block;
     clear: both;
   }
-}
-%flex-centered {
-  display: flex;
-  justify-content: center;
-  align-self: center;
 }

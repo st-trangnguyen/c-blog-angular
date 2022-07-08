@@ -1,0 +1,281 @@
+.main-chat {
+  display: flex;
+  position: fixed;
+  width: calc(100% - #{map-get($layout, office-nav)});
+  height: 100%;
+  top: 0;
+  background: map-get($color, "white");
+  left: #{map-get($layout, office-nav)};
+  z-index: 10000;
+}
+
+.chat-icon {
+  @include flex-centered();
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .badge {
+    @include pxRem(top, 3);
+    @include pxRem(right, 3);
+    position: absolute;
+  }
+}
+.chat-sidebar {
+  width: map-get($layout, $key: sidebar-chat);
+  background: map-get($color, $key: bg-light-primary);
+  border-left: 1px solid map-get($color, bg-light-secondary);
+  border-right: 1px solid map-get($color, bg-light-secondary);
+  height: 100%;
+
+  .header,
+  .chat-search-form {
+    @include pxRem(padding, 0 25);
+  }
+
+  .header {
+    @include pxRem(height, map-get($layout, header-chat));
+    @include flex-center-between();
+    .title {
+      @include pxRem(font-size, 20);
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+  }
+
+  .form-search {
+    @include pxRem(height, 36);
+    @include pxRem(border-radius, 4);
+  }
+  .form-button {
+    @include pxRem(width, 37);
+    @include flex-centered();
+    height: 100%;
+    left: 0;
+    .icon {
+      @include pxRem(font-size, 16);
+      color: map-get($color, grey-g);
+      line-height: 0;
+    }
+  }
+  .form-input {
+    @include pxRem(font-size, map-get($font-size, xs));
+    @include pxRem(line-height, 16.8);
+    width: 100%;
+    height: 100%;
+    color: map-get($color, grey-i);
+    outline: 0;
+    border: none;
+    background: map-get($color, grey-h);
+  }
+
+  .main-content {
+    @include pxRem(padding, 0 10);
+    height: calc(100% - 106px);
+    position: relative;
+  }
+
+  .conversations-section,
+  .search-section {
+    @include pxRem(margin, 25 0);
+    @include pxRem(padding, 0 10);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .conversations-section {
+    z-index: 3;
+  }
+  .search-section {
+    z-index: 4;
+  }
+
+  .search-result-list {
+    width: 100%;
+    height: 100%;
+    background: map-get($color, $key: bg-light-primary);
+  }
+
+  .section-title {
+    @include flex-center-between();
+    @include pxRem(margin, 0 15);
+    border-bottom: 1px solid map-get($color, bg-light-secondary);
+    h3 {
+      @include pxRem(font-size, 16);
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+  }
+  .btn-filter {
+    @include pxRem(height, 30);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+  .conversation-list {
+    max-height: 90%;
+    .conversation-item:first-child {
+      @include pxRem(margin-top, 10);
+    }
+  }
+  .search-result-list {
+    max-height: 100%;
+  }
+  .conversation-list,
+  .search-result-list {
+    overflow-y: auto;
+    &::-webkit-scrollbar-thumb {
+      border: 5px solid map-get($color, bg-light-primary);
+    }
+  }
+
+  .conversation-content {
+    font-weight: 400;
+  }
+  .conversation-datetime {
+    @include pxRem(font-size, 12);
+    color: map-get($color, grey-n);
+  }
+  .conversation-item {
+    @include flex-center-between();
+    @include pxRem(height, 56);
+    @include pxRem(border-radius, 4);
+    @include pxRem(padding, 0 15);
+    cursor: pointer;
+    &.conversation-item-unread {
+      .conversation-body {
+        color: map-get($color, grey-l);
+        font-weight: 700;
+      }
+      .conversation-title {
+        font-weight: 700;
+      }
+      .conversation-content {
+        font-weight: 700;
+      }
+      .conversation-name {
+        max-width: 90%;
+      }
+      .conversation-datetime {
+        color: map-get($color, grey-l);
+      }
+    }
+    .badge {
+      @include pxRem(margin-left, 5);
+      @include pxRem(margin-top, -18);
+    }
+    &:hover,
+    &.conversation-item-selected {
+      background: map-get($color, grey-h);
+      color: map-get($color, grey-l);
+    }
+    &:last-child {
+      @include pxRem(margin-bottom, 50);
+    }
+  }
+  .conversation-empty {
+    @include pxRem(height, 66);
+    @include flex-centered();
+    font-style: italic;
+    color: map-get($color, grey-d);
+  }
+}
+
+.conversation-avatar {
+  display: inline-flex;
+  position: relative;
+  .status {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+.conversation-info {
+  @include flex-center-y();
+  max-width: 80%;
+  width: 80%;
+}
+.conversation-body {
+  @include pxRem(margin-left, 15);
+  max-width: 80%;
+  color: map-get($color, grey-k);
+}
+.conversation-title {
+  @include flex-center-y();
+  @include pxRem(font-size, map-get($font-size, sm));
+  font-weight: 600;
+}
+
+.chat-board-container {
+  position: relative;
+  width: calc(100% - #{map-get($layout, $key: sidebar-chat)});
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  .chat-header {
+    @include pxRem(padding, 0 20);
+    @include pxRem(height, map-get($layout, header-chat));
+    @include flex-center-y();
+    border-bottom: 1px solid map-get($color, bg-light-secondary);
+  }
+  .chat-footer {
+    @include pxRem(min-height, map-get($layout , footer));
+    @include pxRem(padding, 0 20);
+    position: static;
+    background-color: transparent;
+    border-top: none;
+    .form-chat {
+      background-color: transparent;
+    }
+  }
+  .chat-view-container {
+    @include pxRem(padding, 0 20 10);
+    min-height: 0;
+    flex: 1;
+    .message-list-container {
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: flex;
+      flex: 1;
+      flex-direction: column-reverse;
+    }
+    .msg-list {
+      margin-bottom: 0;
+    }
+    .msg-content {
+      @include pxRem(font-size, 14);
+      @include pxRem(padding, 5 0);
+      background-color: transparent;
+      color: map-get($color, secondary);
+      a {
+        color: map-get($color, primary);
+      }
+    }
+  }
+}
+
+.form-rich-text {
+  .msg-error::after {
+    top: 100%;
+    transform: rotate(180deg);
+  }
+}
+
+.chat-filter-dropdown {
+  z-index: 10010 !important;
+}
+
+@include respond-between(large, large-pro) {
+  .main-chat {
+    width: calc(100% - #{map-get($layout, office-nav-tablet)});
+    left: calc(#{map-get($layout, office-nav-tablet)} + 1px);
+  }
+}
+@include respond-below(medium) {
+  .main-chat,
+  .chat-icon {
+    display: none;
+  }
+}

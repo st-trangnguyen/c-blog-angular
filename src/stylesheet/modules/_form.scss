@@ -1,0 +1,339 @@
+.form {
+  position: relative;
+  &.form-center {
+    @include pxRem(width, 440);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .form-group {
+    @include pxRem(margin-bottom, 24);
+    position: relative;
+    &.form-group-icon {
+      @include pxRem(padding-left, 36);
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .icon {
+      position: absolute;
+      left: 0;
+      color: rgba(0, 0, 0, 0.54);
+    }
+    .input-append {
+      color: rgba(0, 0, 0, 0.54);
+      cursor: pointer;
+    }
+  }
+  .form-control {
+    @include pxRem(border-radius, map-get($border-radius, md));
+    @include pxRem(padding, 8 15);
+    @include pxRem(font-size, map-get($font-size, normal));
+    @include pxRem(line-height, 22.4);
+    width: 100%;
+    color: map-get($color, secondary);
+    outline: none;
+    border: 1px solid map-get($color, bg-light-secondary);
+    &.input-underline {
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid map-get($color, bg-light-secondary);
+      position: relative;
+      & + .line {
+        @include pxRem(height, 2);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        background-color: map-get($color, primary);
+        transition: all 0.3s ease-in-out;
+      }
+      &.is-invalid ~ .line {
+        display: none;
+      }
+      &:focus {
+        & + .line {
+          width: 100%;
+        }
+        &::placeholder {
+          opacity: 1;
+        }
+      }
+    }
+    &.is-invalid {
+      border-color: map-get($color, danger);
+      + .form-label {
+        color: map-get($color, danger);
+      }
+    }
+    &:focus,
+    &:not(:placeholder-shown) {
+      ~ .form-label {
+        opacity: 1;
+      }
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+    &.form-control-custom {
+      @include pxRem(border-radius, 25);
+      @include pxRem(padding, 11 30);
+      border-color: map-get($color, bg-light-secondary);
+      &::placeholder {
+        color: map-get($color, grey-f);
+      }
+    }
+    &[readonly],
+    &:disabled,
+    &.disabled {
+      color: map-get($color, disabled);
+      background-color: map-get($color, "white");
+      cursor: default;
+      ~ .form-label,
+      &::placeholder {
+        color: map-get($color, disabled);
+      }
+      &:focus {
+        border-color: map-get($color, bg-light-secondary);
+      }
+    }
+    &:focus {
+      border-color: map-get($color, primary);
+    }
+  }
+  .form-label {
+    @include pxRem(font-size, 12);
+    @include pxRem(line-height, 12);
+    @include pxRem(left, 11);
+    @include pxRem(padding, 4 4);
+    @include pxRem(border-radius, 4);
+    @include pxRem(top, -10);
+    color: map-get($color, grey-b);
+    position: absolute;
+    background-color: map-get($color, "white");
+    display: inline-block;
+    opacity: 0;
+  }
+  .msg-error {
+    @include pxRem(padding, 3 16);
+    @include pxRem(font-size, 12);
+    @include pxRem(margin-top, 6);
+    @include pxRem(border-radius, 5);
+    color: map-get($color, danger-msg);
+    position: relative;
+    display: block;
+    background-color: map-get($color, bg-danger);
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: 100%;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 6px solid rgba($color: map-get($color, danger), $alpha: 0.15);
+    }
+    .txt-link-underline {
+      &:after {
+        background-color: map-get($color, danger-msg);
+      }
+    }
+  }
+  .form-group-append {
+    .input-group {
+      position: relative;
+    }
+    .form-control {
+      @include pxRem(padding-right, 90);
+    }
+    .input-append {
+      @include pxRem(right, 15);
+      @include pxRem(font-size, map-get($font-size, normal));
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+    }
+  }
+  .form-group-prefix {
+    .input-group {
+      position: relative;
+    }
+    .form-control {
+      @include pxRem(padding-left, 32);
+    }
+    .input-prefix {
+      @include pxRem(left, 15);
+      @include pxRem(font-size, 18);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  &.form-sm {
+    .form-group {
+      @include pxRem(margin-bottom, 10);
+    }
+    .form-control, .btn {
+      @include pxRem(height, 32);
+      @include pxRem(font-size, 12);
+    }
+  }
+  &.form-inline {
+    @include pxRem(width, 500);
+    @include pxRem(height, 45);
+    display: flex;
+    border: 1px solid map-get($color, primary);
+    .form-group {
+      height: 100%;
+      width: 60%;
+    }
+    .form-control {
+      @include pxRem(padding, 12 20);
+      border: 0;
+    }
+    .btn {
+      width: 40%;
+      height: 100%;
+      flex-direction: column;
+      .btn-tagline {
+        letter-spacing: 0.15px;
+      }
+    }
+    .msg-error {
+      @include pxRem(margin-top, 10);
+      @include pxRem(width, 335);
+    }
+  }
+}
+
+.multi-email-container {
+  height: 150px;
+  border-radius: 5px;
+  border: 1px solid map-get($color, bg-light-secondary);
+  overflow: auto;
+  padding: 16px;
+  &:focus-within {
+    border-color: map-get($color, primary);
+  }
+
+  .multi-email-input {
+    outline: none;
+    text-align: left;
+    padding-left: 3px;
+    margin-top: -8px;
+    height: 30px;
+    display: inline-block;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .multi-email-item {
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    border-radius: 4px;
+    border: 1px solid map-get($color, bg-light-secondary);
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    padding: 3px 8px;
+
+    &.multi-email-item-invalid {
+      border-color: map-get($color, danger);
+      color: map-get($color, danger);
+    }
+    .remove-btn {
+      font-size: 10px;
+      padding: 5px;
+      padding-right: 0;
+      line-height: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: 0 0 0 30px map-get($color, "white") inset !important;
+}
+
+.form-search {
+  @include pxRem(border-radius, map-get($border-radius, md));
+  position: relative;
+  display: flex;
+  align-items: center;
+  .btn-search {
+    @include pxRem(padding, 15);
+    width: 18.8%;
+    height: auto;
+  }
+  .form-button {
+    @include pxRem(left, 30);
+    position: absolute;
+    color: map-get($color, disabled);
+    &.clear-search-btn {
+      @include pxRem(padding, 15 10);
+      @include pxRem(right, 16);
+      left: auto;
+      .icon {
+        font-size: 10px;
+        color: map-get($color, blue-dark);
+      }
+    }
+  }
+  .form-input {
+    @include pxRem(height, 34);
+    @include pxRem(font-size, 16);
+    @include pxRem(padding, 10 14);
+    @include pxRem(border-radius, 30);
+    width: 100%;
+    border: 1px solid map-get($color, bg-light-secondary);
+    background-color: map-get($color, grey-h);
+    color: map-get($color, heading);
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+    &::placeholder {
+      color: map-get($color, disabled);
+    }
+  }
+  &.form-search-square {
+    .form-input {
+      @include pxRem(border-radius, 5);
+      @include pxRem(height, 46);
+      background-color: map-get($color, "white");
+    }
+    .form-button {
+      @include pxRem(left, 35);
+      &.clear-search-btn {
+        @include pxRem(right, 16);
+        left: auto;
+      }
+    }
+  }
+  &.form-search-prepend {
+    .form-input {
+      @include pxRem(padding-left, 35);
+    }
+  }
+  &.form-search-append {
+    .form-input {
+      @include pxRem(padding-right, 25);
+    }
+  }
+  .msg-error {
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+  }
+}

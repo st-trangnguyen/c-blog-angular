@@ -1,0 +1,86 @@
+.basic-container {
+  @include pxRem(padding-top, 30);
+  @include flex-column-centered();
+  min-height: 100vh;
+
+  .main {
+    @include flex-column-centered();
+    @include pxRem(padding-bottom, 40);
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 100%;
+    min-height: calc(100vh - (30px + 90px + 45px));
+  }
+
+  .page-heading {
+    @include pxRem(padding-bottom, 32);
+    @include flex-column-centered();
+    @include pxRem(width, 650);
+    max-width: 100%;
+    text-align: center;
+    z-index: 1;
+    &.page-heading-lg {
+      width: 100%;
+    }
+    .page-title {
+      @include pxRem(font-size, 28);
+      @include pxRem(line-height, 30.8);
+    }
+    .sub-title {
+      @include pxRem(font-size, 16);
+      @include pxRem(line-height, 22.4);
+    }
+  }
+  .page-content {
+    @include pxRem(max-width, map-get($container-breakpoints, medium));
+    width: 100%;
+    .form-wrapper {
+      width: 100%;
+    }
+    &.page-content-lg {
+      max-width: 100%;
+      .image-container {
+        max-width: 100%;
+      }
+    }
+    .tip-bottom {
+      margin-top: 80px;
+      text-align: center;
+    }
+  }
+  .tips {
+    color: map-get($color, secondary);
+  }
+  .main-lg {
+    .page-content {
+      @include pxRem(max-width, map-get($container-breakpoints, large));
+      width: 100%;
+    }
+  }
+  .main-auto {
+    .page-content {
+      max-width: 100%;
+    }
+  }
+  .page-inner-lg {
+    @include pxRem(width, map-get($container-breakpoints, large));
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .full-content-wrapper {
+    position: static;
+    height: auto;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@include respond-below(medium) {
+  .basic-container {
+    @include pxRem(padding-top, 0);
+    .main {
+      min-height: calc(100vh - (90px + 78px));
+    }
+  }
+}

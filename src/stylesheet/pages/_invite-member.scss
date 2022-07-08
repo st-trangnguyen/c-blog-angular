@@ -1,0 +1,38 @@
+.modal-invite-member {
+  .modal-dialog {
+    width: 100%;
+  }
+  .modal-header {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .modal-body {
+    @include pxRem(padding-top, 10);
+  }
+  .media-body {
+    width: calc(100% - 30px);
+    .office-name {
+      width: 100%;
+    }
+  }
+  .media-action {
+    @include pxRem(min-width, 30);
+  }
+  .remaining-slot {
+    @include pxRem(font-size, 14);
+    @include pxRem(margin-bottom, 10);
+    font-style: italic;
+    color: map-get($color, primary);
+  }
+  .btn-select-all {
+    white-space: nowrap;
+  }
+  .btn-group {
+    margin-bottom: 0;
+    justify-content: flex-end;
+    .btn {
+      @include pxRem(width, 145);
+      @include pxRem(height, 40);
+    }
+  }
+}

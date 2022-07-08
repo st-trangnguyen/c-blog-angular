@@ -8,7 +8,7 @@
   text-align: right;
 }
 .txt-center {
-  text-align: center
+  text-align: center;
 }
 .no-wrap {
   white-space: nowrap;
@@ -19,9 +19,108 @@
 .txt-demi {
   font-weight: 600;
 }
+.txt-regular {
+  font-weight: 400;
+}
 .txt-uppercase {
   text-transform: uppercase;
 }
+.txt-lowercase {
+  text-transform: lowercase;
+}
+.txt-ellipsis {
+  @include ellipsis-special();
+}
 .txt-capitalize {
   text-transform: capitalize;
+}
+.txt-break-word {
+  word-break: break-word;
+}
+.txt-danger {
+  color: map-get($color, danger);
+}
+.txt-link {
+  @include pxRem(padding-bottom, 2);
+  color: map-get($color, primary);
+  position: relative;
+  &:after {
+    content: "";
+    height: 1px;
+    width: 0;
+    background: map-get($color, primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  &:hover {
+    &:after {
+      transition: width 0.3s ease;
+      width: 100%;
+    }
+  }
+  &.txt-link-error {
+    color: map-get($color, danger);
+    &::after {
+      background: map-get($color, danger);
+    }
+  }
+}
+
+.txt-link-underline {
+  @include pxRem(padding-bottom, 2);
+  position: relative;
+  display: inline-block;
+  &:after {
+    @include pxRem(bottom, 5);
+    content: "";
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+  }
+  &.txt-link-primary {
+    color: map-get($color, primary);
+    &::after {
+      background: map-get($color, primary);
+    }
+  }
+  &.txt-link-danger {
+    color: map-get($color, danger);
+    &::after {
+      background: map-get($color, danger);
+    }
+  }
+}
+
+.txt-division {
+  @include pxRem(margin, 20 0);
+  @include flex-centered();
+  text-transform: uppercase;
+  &::before,
+  &::after {
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: map-get($color, grey-c);
+  }
+  &::before {
+    @include pxRem(margin-right, 20);
+  }
+  &::after {
+    @include pxRem(margin-left, 20);
+  }
+}
+
+.txt-underline {
+  text-decoration: underline;
+}
+.txt-italic {
+  font-style: italic;
+}
+
+@each $name, $value in $font-size { //$font-size is defined in _variables.scss
+  .txt-#{$name} {
+    @include pxRem(font-size, $value);
+  }
 }

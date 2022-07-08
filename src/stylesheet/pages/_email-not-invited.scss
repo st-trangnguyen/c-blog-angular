@@ -1,0 +1,8 @@
+.email-not-invited-content {
+  .main-content {
+    @include pxRem(margin-bottom, 40);
+    .image-container {
+      @include pxRem(margin-bottom, 65);
+    }
+  }
+}

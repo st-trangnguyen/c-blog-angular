@@ -1,0 +1,23 @@
+.alert {
+  @include pxRem(border-radius, map-get($border-radius, md));
+  @include flex-center-y();
+  @include pxRem(padding, 0 15);
+  @include animation(fade-out 0.5s forwards);
+  height: 0;
+  overflow: hidden;
+
+  &.show {
+    @include pxRem(height, 50);
+    @include animation(fade-in 0.5s forwards);
+  }
+
+  &.alert-success {
+    background: map-get($color, bg-success);
+    color: map-get($color, success-msg);
+  }
+
+  &.alert-danger {
+    background: map-get($color, bg-danger);
+    color: map-get($color, danger);
+  }
+}

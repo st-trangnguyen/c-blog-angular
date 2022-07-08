@@ -1,0 +1,71 @@
+/*Huge thanks to @tobiasahlin at http://tobiasahlin.com/spinkit/ */
+.spinner {
+  @include flex-center-y();
+  .bounce {
+    @include animation(bounce-delay 1.4s infinite ease-in-out both);
+    @include pxRem(margin-left, 5);
+    border-radius: 50%;
+    background: rgba(map-get($color, secondary), .8);
+    &:first-child {
+      @include animation-delay(-0.32s)
+    }
+
+    &:nth-child(2) {
+      @include animation-delay(-0.16s)
+    }
+  }
+
+  &-lg > .bounce {
+    @include pxRem(width, 20);
+    @include pxRem(height, 20);
+  }
+
+  &-md > .bounce {
+    @include pxRem(width, 10);
+    @include pxRem(height, 10);
+  }
+
+  &-sm > .bounce {
+    @include pxRem(width, 5);
+    @include pxRem(height, 5);
+  }
+
+  &-white > .bounce {
+    background: map-get($color, "white");
+  }
+}
+
+.loader {
+  @include flex-centered();
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: map-get($color, "white");
+}
+
+.section-loading {
+  opacity: 0;
+}
+
+.small-loading-wrapper {
+  @include flex-centered();
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+@keyframes bounce-delay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}

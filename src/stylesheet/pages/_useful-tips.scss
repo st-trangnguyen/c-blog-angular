@@ -1,0 +1,144 @@
+.useful-tips-header {
+  .tagline {
+    font-style: italic;
+  }
+  .sub-title {
+    @include pxRem(font-size, 16);
+  }
+}
+.useful-tips-wrapper {
+  @include pxRem(padding, 20);
+  @include pxRem(border-radius, 6);
+  @include pxRem(margin-bottom, 50);
+  border: 1px solid rgba(0, 0, 0, .2);
+  @include respond-below(medium) {
+    @include pxRem(padding, 15 20);
+  }
+  .webcam-video,
+  .user-video-stream {
+    @include pxRem(border-radius, 6);
+    @include pxRem(min-height, 270);
+    width: 100%;
+    background-color: map-get($color, heading);
+  }
+  .webcam-video {
+    @include flex-centered();
+    position: relative;
+    .msg {
+      @include pxRem(font-size, 18);
+      position: absolute;
+      color: map-get($color, "white");
+      font-weight: 500;
+    }
+  }
+  .room-devices {
+    @include flex-center-x();
+    flex-direction: column;
+    height: 100%;
+    .camera-settings {
+      display: flex;
+      justify-content: space-between;
+      .device-selection-box {
+        &:last-child {
+          width: 125px;
+        }
+        &:first-child {
+          width: calc(100% - 125px - 24px);
+        }
+      }
+    }
+    .btn {
+      @include pxRem(font-size, map-get($font-size, lg));
+    }
+  }
+  .txt-link {
+    &::after {
+      width: 100%;
+      @include pxRem(bottom, 2);
+    }
+    &.cursor-pointer {
+      &::after {
+        @include pxRem(bottom, 5);
+      }
+    }
+  }
+  .tips-group {
+    @include pxRem(margin-bottom, 30);
+    @include pxRem(margin-top, 30);
+    @include respond-below(medium) {
+      @include pxRem(margin-bottom, 15);
+      @include pxRem(margin-top, 15);
+    }
+    display: flex;
+    .tips-icon {
+      @include pxRem(margin-right, 15);
+      @include pxRem(height, 22);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      color: map-get($color, grey-d);
+      @include pxRem(max-width, 18);
+      width: 100%;
+      justify-content: center;
+    }
+    .tips-main {
+      @include pxRem(padding-top, 20);
+      display: flex;
+      align-items: center;
+      @include respond-below(medium) {
+        flex-wrap: wrap;
+      }
+      .avatar {
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
+      }
+      .inp-file {
+        display: none;
+      }
+      .btn-upload {
+        @include pxRem(margin-right, 16);
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .permission {
+    &-icon {
+      vertical-align: middle;
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    &-granted {
+      color: map-get($color, success);
+    }
+    &-denied,
+    &-unsupported {
+      color: map-get($color, danger);
+      @include respond-below(medium) {
+        @include pxRem(padding, 10 0 0);
+      }
+    }
+  }
+}
+
+@include respond-below(medium) {
+  .useful-tips-wrapper {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .room-devices {
+      flex-direction: row;
+      margin-top: 50px;
+      padding: 0 50px;
+      justify-content: space-around;
+      width: 100%;
+    }
+  }
+}

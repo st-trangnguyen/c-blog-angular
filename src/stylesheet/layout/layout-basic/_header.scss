@@ -1,0 +1,27 @@
+.basic-header {
+  @include flex-centered();
+  @include pxRem(height, 90);
+  width: 100%;
+  .logo {
+    @include pxRem(height, 40);
+    display: block;
+  }
+  .menu {
+    @include pxRem(margin, 0 -10);
+    display: flex;
+    align-items: center;
+    .menu-item {
+      @include pxRem(padding, 10);
+      text-transform: capitalize;
+    }
+  }
+}
+
+@include respond-below(medium) {
+  .basic-header {
+    // @include pxRem(height, 90);
+    .logo {
+      @include pxRem(height, 35);
+    }
+  }
+}

@@ -1,0 +1,165 @@
+.room-toolbar {
+  &.room-widget {
+    @include pxRem(width, 208);
+    @include pxRem(height, 190);
+    @include pxRem(bottom, 40);
+    @include pxRem(right, 40);
+    @include pxRem(border-radius, 3);
+    padding: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    left: auto;
+    transform: none;
+    z-index: map-get($z-index, widget);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    &.react-draggable {
+      cursor: move;
+    };
+    .btn-minimize-expand {
+      display: none;
+    }
+    &.minimized {
+      @include pxRem(width, 60);
+      @include pxRem(height, 60);
+      padding: 0;
+      border-radius: 50%;
+      cursor: move;
+      overflow: hidden;
+      &.ripple {
+        animation: ripple .5s linear infinite;
+        border-color: map-get($color, primary) !important;
+      }
+      .btn-minimize-expand,
+      .icon-status,
+      .widget-actions {
+        display: none;
+      }
+      .avatar-wrapper {
+        @include pxRem(width, 60);
+        @include pxRem(height, 60);
+        margin: 0;
+        padding: 0;
+      }
+      .current-avatar {
+        @include pxRem(min-width, map-get($avatar-size, lg));
+        @include pxRem(width, map-get($avatar-size, lg));
+        @include pxRem(min-height, map-get($avatar-size, lg));
+        @include pxRem(height, map-get($avatar-size, lg));
+      }
+      .live-avatar {
+        border-radius: 50%;
+      }
+      .room-toolbar-inner {
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    .icon-status.talking-status {
+      @include pxRem(bottom, 60);
+      @include pxRem(right, 20);
+      position: absolute;
+    }
+    .room-toolbar-inner {
+      @include pxRem(height, 36);
+      @include pxRem(padding, 0 16);
+      align-items: center;
+      opacity: 1;
+      visibility: visible;
+    }
+    .avatar-wrapper {
+      @include pxRem(margin-bottom, 5);
+      @include pxRem(height, 143);
+      position: relative;
+      width: 100%;
+      transition: all .3s ease-in-out;
+    }
+    .live-avatar {
+      @include pxRem(border-radius, 3);
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      background: map-get($color, blue-dark);
+      transition: all .4s ease-in-out;
+      z-index: 0;
+      .current-avatar {
+        @include pxRem(width, 64);
+        @include pxRem(height, 64);
+        transition: all .3s ease-in-out;
+      }
+      .user-video-stream {
+        border-radius: 0;
+        width: 100%;
+      }
+    }
+    .toolbar-items-optional {
+      @include pxRem(margin-left, 0);
+      @include pxRem(padding-left, 15);
+    }
+    .toolbar-item {
+      margin-right: 0;
+      &.device-source-list {
+        width: auto;
+      }
+      .btn {
+        @include pxRem(width, 30);
+        @include pxRem(height, 30);
+        @include pxRem(font-size, 13);
+        transition: width 0s;
+      }
+    }
+    .device-selection-box {
+      @include pxRem(min-width, 30);
+      height: 100%;
+      .device-selection-icon {
+        @include pxRem(width, 30);
+        @include pxRem(height, 30);
+        position: static;
+        .icon-status.talking-status {
+          @include pxRem(right, 12);
+        }
+      }
+      .device-selection-input {
+        display: none;
+      }
+    }
+    .widget-actions {
+      @include pxRem(top, 5);
+      @include pxRem(right, 5);
+      @include flex-center-y();
+      justify-content: flex-end;
+      position: absolute;
+      z-index: 1;
+      .tooltip-tip {
+        white-space: nowrap;
+        transform: translate(-50%, 50%);
+      }
+    }
+  }
+}
+
+@include respond-below(large-pro) {
+  .room-toolbar.room-widget.minimized {
+    @include pxRem(width, 70);
+    @include pxRem(height, 70);
+    .avatar-wrapper,
+    .current-avatar {
+      @include pxRem(min-width, 70);
+      @include pxRem(width, 70);
+      @include pxRem(min-height, 70);
+      @include pxRem(height, 70);
+    }
+    .btn-minimize-expand {
+      @include pxRem(width, 20);
+      @include pxRem(height, 20);
+    }
+  }
+}
+
+@include respond-below(large-max) {
+  .room-toolbar.room-widget {
+    .room-toolbar-inner {
+      @include pxRem(padding, 0 40);
+    }
+  }
+}

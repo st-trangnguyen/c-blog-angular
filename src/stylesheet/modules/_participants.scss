@@ -1,0 +1,54 @@
+.participant-list {
+  @include pxRem(max-height, 410);
+  overflow: scroll;
+  width: 100%;
+}
+.participant-item {
+  @include pxRem(border-radius, 4);
+  @include pxRem(padding, 6 14);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background-color: map-get($color, bg-light-primary);
+    .btn-icon {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .media-title {
+    @include pxRem(font-size, map-get($font-size, sm));
+  }
+  .media-body {
+    width: calc(100% - 40px);
+  }
+  .media-image {
+    position: relative;
+  }
+  .status {
+    @include pxRem(width, 15);
+    @include pxRem(height, 15);
+    @include pxRem(font-size, 5);
+    @include flex-centered();
+    position: absolute;
+    left: 100%;
+    bottom: 0;
+    border: 1px solid map-get($color, "white");
+    transform: translateX(-50%);
+    &-success {
+      background-color: map-get($color, bg-success);
+      color: map-get($color, success);
+    }
+    &-danger {
+      background-color: map-get($color, bg-danger);
+      color: map-get($color, danger);
+    }
+  }
+  .media-action {
+    @include pxRem(min-width, 40);
+  }
+  .btn-icon {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+  }
+}

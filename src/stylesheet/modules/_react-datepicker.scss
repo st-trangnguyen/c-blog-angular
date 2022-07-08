@@ -1,0 +1,117 @@
+.react-datepicker-popper {
+  z-index: 2;
+}
+.react-datepicker {
+  @include pxRem(padding, 24 32);
+  font-family: $font-body;
+  border-color: map-get($color, bg-light-secondary);
+  &.react-datepicker--time-only {
+    padding: 0;
+    overflow: hidden;
+  }
+  .react-datepicker__triangle {
+    display: none;
+  }
+  .react-datepicker__navigation--previous {
+    @include pxRem(right, 62);
+  }
+  .react-datepicker__navigation--next {
+    @include pxRem(right, 32);
+  }
+  .react-datepicker__navigation {
+    @include pxRem(top, 35);
+    @include pxRem(width, 20);
+    @include pxRem(height, 20);
+    left: auto;
+    .react-datepicker__navigation-icon {
+      @include pxRem(top, 2);
+      &::before {
+        @include pxRem(border-width, 2 2 0 0);
+        border-color: map-get($color, secondary);
+      }
+    }
+  }
+  .react-datepicker__navigation-icon {
+    &::before {
+      @include pxRem(width, 6);
+      @include pxRem(height, 6);
+    }
+  }
+  .react-datepicker__current-month,
+  .react-datepicker__day-name,
+  .react-datepicker__day {
+    color: map-get($color, secondary);
+  }
+  .react-datepicker__day--disabled {
+    color: map-get($color, disabled);
+  }
+  .react-datepicker__header  {
+    padding: 0;
+    background-color: map-get($color, "white");
+    border-bottom: none;
+    text-align: left;
+    .react-datepicker__current-month {
+      @include pxRem(padding, 8 16);
+      @include pxRem(border-radius, 8);
+      @include pxRem(margin-bottom, 10);
+      display: inline-block;
+      text-align: left;
+      color: map-get($color, primary);
+      background-color: map-get($color, grey-e);
+      font-size: 600;
+    }
+    .react-datepicker__day-names {
+      text-align: center;
+    }
+    .react-datepicker__day-name {
+      @include pxRem(font-size, map-get($font-size, sm));
+      @include pxRem(width, 40);
+      @include pxRem(height, 40);
+      font-weight: 700;
+    }
+  }
+  .react-datepicker__month {
+    @include pxRem(margin, 6 0);
+  }
+  .react-datepicker__day {
+    @include pxRem(width, 40);
+    @include pxRem(height, 40);
+    @include pxRem(font-size, map-get($font-size, sm));
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .react-datepicker__day--today {
+    color: map-get($color, primary);
+    background-color: map-get($color, bg-light-primary);
+  }
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected {
+    background-color: map-get($color, primary);
+    color: map-get($color, "white");
+    outline: none;
+  }
+  .react-datepicker__time-box,
+  .react-datepicker__time-container {
+    @include pxRem(width, 150 !important);
+    overflow: hidden;
+    .react-datepicker__header {
+      display: none;
+    }
+    .react-datepicker__time-list-item {
+      @include pxRem(width, 150 !important);
+      @include pxRem(height, 40 !important);
+      @include pxRem(padding, 16 12 !important);
+      @include pxRem(font-size, map-get($font-size, sm));
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      text-transform: lowercase;
+    }
+    .react-datepicker__time-list-item--selected {
+      background-color: map-get($color, bg-light-primary) !important;
+      color: map-get($color, primary) !important;
+    }
+  }
+}

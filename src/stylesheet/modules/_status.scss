@@ -1,0 +1,31 @@
+.status {
+  display: block;
+  border-radius: 50%;
+  @include pxRem(width, 6);
+  @include pxRem(height, 6);
+  &.status-sm {
+    @include pxRem(width, 10);
+    @include pxRem(height, 10);
+  }
+  &.status-border {
+    border: 2px solid map-get($color, "white");
+  }
+  &.status-xs {
+    border-width: 1px;
+  }
+  &.status-available {
+    background: map-get($color, success);
+  }
+  &.status-offline {
+    background: map-get($color, grey-d);
+  }
+  &.status-waiting {
+    background: map-get($color, warning);
+  }
+  &.status-busy {
+    background: map-get($color, danger);
+  }
+  &.status-square {
+    border-radius: 2px;
+  }
+}

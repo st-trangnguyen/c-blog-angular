@@ -1,0 +1,13 @@
+.basic-footer {
+  @include pxRem(padding, 0 20);
+  @include flex-centered();
+  @include pxRem(height, 45);
+  width: 100vw;
+  background-color: map-get($color, bg-light-primary);
+  .footer-link {
+    @include pxRem(padding, 0 10);
+    text-decoration: none;
+    letter-spacing: 0;
+    color: map-get($color, grey-b);
+  }
+}

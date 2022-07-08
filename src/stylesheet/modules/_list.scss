@@ -1,0 +1,18 @@
+.list-group {
+  .list-group-item {
+    @include pxRem(padding, 25);
+    border-top: 1px solid map-get($color, bg-light-secondary);
+    &:first-child {
+      border-top: none
+    }
+  }
+  .list-item-narrow {
+    @include pxRem(padding, 10 25);
+    flex-wrap: wrap;
+  }
+}
+
+.list-group-scroll-250 {
+  max-height: 300px;
+  overflow-y: scroll;
+}

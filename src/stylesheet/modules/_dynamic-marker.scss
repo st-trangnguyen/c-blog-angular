@@ -1,0 +1,190 @@
+.marker {
+  @include pxRem(border-radius, 4);
+  @include pxRem(padding, 6 8);
+  position: absolute;
+  background-color: map-get($color, "white");
+  border: 1px solid map-get($color, bg-light-secondary);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  z-index: map-get($z-index, sidebar);
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  &::before {
+    border: 9px solid transparent;
+  }
+  &::after {
+    border: 8px solid transparent;
+  }
+
+  &.marker-top-left {
+    border-bottom-left-radius: 0;
+  }
+  &.marker-top-right {
+    border-bottom-right-radius: 0;
+  }
+  &.marker-bottom-left {
+    border-top-left-radius: 0;
+  }
+  &.marker-bottom-right,
+  &.marker-left-center {
+    border-top-right-radius: 0;
+  }
+
+  &.marker-top-left,
+  &.marker-bottom-left {
+    left: 50%;
+    &::before {
+      left: -1px;
+      border-left-color: map-get($color, grey-m);
+    }
+    &::after {
+      left: 0;
+      border-left-color: map-get($color, "white");
+    }
+  }
+
+  &.marker-top-right,
+  &.marker-bottom-right {
+    right: 50%;
+    &::before {
+      right: -1px;
+      border-right-color: map-get($color, grey-m);
+    }
+    &::after {
+      right: 0;
+      border-right-color: map-get($color, "white");
+    }
+  }
+
+  &.marker-top-left,
+  &.marker-top-right {
+    bottom: calc(100% + 22px);
+    &::before,
+    &::after {
+      top: 100%;
+    }
+    &::before {
+      border-top-color: map-get($color, grey-m);
+    }
+    &::after {
+      border-top-color: map-get($color, "white");
+    }
+  }
+
+  &.marker-bottom-left,
+  &.marker-bottom-right {
+    top: calc(100% + 22px);
+    &::before,
+    &::after {
+      bottom: 100%;
+    }
+    &::before {
+      border-bottom-color: map-get($color, grey-m);
+    }
+    &::after {
+      border-bottom-color: map-get($color, "white");
+    }
+  }
+
+  &.marker-left-center {
+    top: 50%;
+    transform: translateY(-50%);
+    &::before {
+      @include pxRem(border-width, 8);
+      top: -1px;
+      left: calc(100% + 1px);
+      border-left-color: map-get($color, grey-m);
+      border-top-color: map-get($color, grey-m);
+    }
+    &::after {
+      top: 0;
+      left: calc(100% - 1px);
+      border-left-color: map-get($color, "white");
+      border-top-color: map-get($color, "white");
+    }
+  }
+
+  &.resizable-sharing-screen {
+    padding: 2px;
+    border-color: transparent;
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  &.marker-interaction {
+    @include pxRem(min-width, 90);
+    width: max-content;
+    padding: 0;
+    .btn-interaction {
+      @include pxRem(padding, 2 8);
+      @include pxRem(font-size, 14);
+      font-weight: 400;
+      color: map-get($color, primary);
+    }
+  }
+
+  .marker-title {
+    @include pxRem(font-size, map-get($font-size, xs));
+    @include flex-center-between();
+    @include pxRem(margin-bottom, 5);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .btn-close {
+    @include pxRem(min-width, 24);
+    @include pxRem(min-height, 24);
+    @include pxRem(width, 24);
+    @include pxRem(height, 24);
+    @include pxRem(font-size, 8);
+    padding: 0;
+  }
+
+  .marker-detail {
+    @include pxRem(font-size, map-get($font-size, xs));
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .marker-message {
+    @include pxRem(font-size, map-get($font-size, xs));
+    @include flex-center-y();
+    text-align: left;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .interaction-actions {
+    @include flex-center-between();
+    @include pxRem(border-radius, 34);
+    @include pxRem(padding, 4 8);
+    background-color: map-get($color, bg-light-primary);
+    width: 100%;
+    .btn-icon {
+      @include pxRem(width, 24);
+      @include pxRem(height, 24);
+      &:hover {
+        .talk-icon {
+          animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both infinite;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+    }
+  }
+
+  .btn-split {
+    @include pxRem(font-size, map-get($font-size, xs));
+    @include pxRem(padding, 4 8);
+    font-weight: 400;
+    .btn-split-icon {
+      @include pxRem(font-size, 8);
+    }
+  }
+}

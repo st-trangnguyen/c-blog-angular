@@ -1,0 +1,56 @@
+.toast {
+  @include pxRem(top, 45);
+  @include pxRem(right, 30);
+  @include pxRem(padding, 15);
+  @include pxRem(max-width, 350);
+  @include animation(fade-in 0.5s forwards);
+  @include pxRem(border-radius, map-get($border-radius, md));
+  position: fixed;
+  background: map-get($color, secondary);
+  z-index: map-get($z-index, toast);
+  color: map-get($color, "white");
+}
+
+.toast-warning {
+  background: map-get($color, bg-warning);
+  color: map-get($color, warning-msg);
+
+  .icon {
+    color: map-get($color, warning);
+  }
+}
+
+.toast-success {
+  background: map-get($color, bg-success);
+  color: map-get($color, success-msg);
+
+  .icon {
+    color: map-get($color, success);
+  }
+}
+
+.toast-danger {
+  background: map-get($color, bg-danger);
+  color: map-get($color, danger-msg);
+  .icon {
+    color: map-get($color, danger);
+  }
+}
+
+.toast-top {
+  @include flex-centered();
+  @include pxRem(height, 40);
+  @include pxRem(padding, 0 20);
+  width: 100%;
+  max-width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+}
+
+@include respond-below(medium) {
+  .toast {
+    width: 100%;
+  }
+}

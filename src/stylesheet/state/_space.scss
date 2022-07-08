@@ -1,8 +1,8 @@
 $value : 5;
-$sizeList : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$size : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 
 // Padding
-@each $size in $sizeList {
+@each $size in $size {
   .pd-#{$size} {
     @include pxRem(padding, $value * $size);
   }

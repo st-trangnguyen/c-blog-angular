@@ -1,30 +1,166 @@
 // == Breakpoints ===
 $breakpoints: (
+  smallest: 375px,
   small: 480px,
   medium: 768px,
   wide: 960px,
   large: 1024px,
+  large-max: 1025px,
+  large-pro: 1367px,
   largest: 1280px,
-  super-largest: 1441px
+  super-largest: 1441px,
+  pc: 1920px
 );
 
 $color: (
-  primary:  #E61E56,
-  orange-a: #a17143,
-  grey-a: #f3f3f3,
-  black: #000000,
-  white: #FFFFFF
+  primary:  #7269EF,
+  secondary: #343A40,
+  danger: #EB5757,
+  danger-msg: #A83232,
+  bg-danger: #FFDBDC,
+  warning: #FF932F,
+  warning-msg: #9E5B1D,
+  bg-warning: #FFE9D2,
+  success: #27AE60,
+  success-msg: #074A23,
+  bg-success: #CEF1DF,
+  info: #2F80ED,
+  info-msg: #255BA4,
+  bg-info: #D3E5FD,
+  heading: #161849,
+  grey-a: #7A7F9A,
+  grey-b: #878A92,
+  grey-c: #DDDDDD,
+  grey-d: #B8C2D6,
+  grey-e: #F3F3F3,
+  grey-f: #ACACAC,
+  grey-g: #9BA6BB,
+  grey-h: #E6EBF5,
+  grey-i: #7A8199,
+  grey-k: #3E414D,
+  grey-l: #161849,
+  grey-n: #7A8199,
+  grey-m: #DADCE0,
+  gray-o: #F1F4F8,
+  grey-p: #f4f4f4,
+  grey-u: #babac0,
+  grey-r: #a0a0a5,
+  grey-s: #CBD2E3,
+  grey-t: #D6D6D6,
+  purple-a: #C3BFF1,
+  purple-b: #B5B0F4,
+  purple-c: #F4F3FF,
+  purple-d: #D9D7FF,
+  purple-e: #6A14BA,
+  purple-f: #5147FF,
+  purple-g: #D5D5F7,
+  ripple: #2962ff,
+  ripple-line: #2FDB89,
+  "white": #FFFFFF, // Wrap by "" to prevent error when use in str-index() function (ex: _color.scss)
+  "black": #000000,
+  "red": #F15050,
+  red-a: #EB5757,
+  red-b: #E01E5A,
+  white-a: #FCFCFC,
+  black-a: #1C1E20,
+  black-b: #485963,
+  black-c: #0E0F21,
+  bg-primary: rgba($color: #7269EF, $alpha: 0.25),
+  bg-secondary: rgba($color: #343A40, $alpha: 0.25),
+  bg-tertiary: #E4E0FC,
+  bg-grey-a: rgba($color: #7A7F9A, $alpha: 0.15),
+  bg-light-primary: #F5F7FB,
+  bg-light-secondary: #D8DFEE,
+  bg-light-tertiary: #E6EBF2,
+  bg-dialog: rgba($color: #000000, $alpha: 0.25),
+  bg-dark: #333333,
+  bg-hover: #7A72E2,
+  bg-red: #FF0000,
+  bg-blue-dark: #0A2540,
+  bg-green: rgba($color: #00C714, $alpha: 0.1),
+  "yellow": #FFBD12,
+  "green": #00C714,
+  "blue": #00C1FF,
+  "orange": #FF8A00,
+  warning-a: #FF932F,
+  black-transparent: #000000bf,
+  white-transparent: #ffffffdb,
+  blue-dark: #161849,
+  disabled: #9EA0A8,
+  icon: rgba($color: #000000, $alpha: 0.54),
+);
+
+$layout: (
+  header: 89px,
+  office-nav: 60px,
+  office-nav-tablet: 45px,
+  room-nav: 252px,
+  room-nav-tablet: 200px,
+  footer: 58px,
+  header-mobile: 100px,
+  sidebar-right-mobile: 40px,
+  sidebar-left-mobile: 60px,
+  room-title-mobile: 44px,
+  sidebar-collapsed: 20px,
+  sidebar-chat: 375px,
+  header-chat: 70px,
+  footer-chat: 98px,
+  room-layout-right: 300px
+);
+
+$side-bar-width: map-get($layout, office-nav) + map-get($layout, room-nav);
+$room-header-height: map-get($layout, header);
+
+$z-index: (
+  header: 8,
+  sidebar: 10,
+  dialog: 100,
+  footer: 12,
+  rightMenu: 14,
+  widget: 10001,
+  personalized-view: 10000,
+  toast: 99999,
+  canvas: 1000000000,
+  block-action: 999999999
 );
 
 $font-size: (
-  xs:     11px,
-  sm:     13px,
+  xxs:    10px,
+  xs:     12px,
+  sm:     14px,
   normal: 16px,
-  lg:     18px,
-  xl:     20px,
-  xxl:    24px,
-  xxxl:   30px
+  md:     18px,
+  lg:     21px,
+  xl:     24px,
 );
 
-$font-body: san-serif;
-$font-japan: serif;
+$seat-size: (
+  sm: 38px,
+  md: 40px,
+  lg: 70px,
+  xl: 110px
+);
+
+$container-breakpoints: (
+  medium: 440,
+  large: 840
+);
+
+$border-radius: (
+  sm: 4px,
+  md: 5px
+);
+
+$avatar-size: (
+  xl: 110px,
+  lg: 60px,
+  ultra-wide: 46px,
+  wide: 38px,
+  md: 30px,
+  sm: 27px,
+  xs: 20px,
+  '42': 42px
+);
+
+$font-body: "Nunito", sans-serif;
+$font-poppins: "Poppins", sans-serif;

@@ -1,0 +1,26 @@
+.tags {
+  @include pxRem(border-radius, 4);
+  @include pxRem(padding, 8 10);
+  display: inline-flex;
+  background-color: map-get($color, grey-e);
+  & + &-desc {
+    @include pxRem(font-size, 12);
+  }
+  .tags-icon,
+  .tags-remove-icon,
+  .tags-name {
+    @include flex-centered();
+  }
+  .tags-icon {
+    @include pxRem(margin-right, 5);
+    color: map-get($color, grey-g);
+  }
+  .tags-name {
+    @include pxRem(margin-right, 10);
+    line-height: 1;
+  }
+  .tags-remove-icon {
+    transform: rotate(45deg);
+    color: map-get($color, grey-g);
+  }
+}

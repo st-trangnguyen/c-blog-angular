@@ -1,0 +1,59 @@
+.slider-container {
+  .btn-arrow {
+    @include pxRem(width, 32);
+    @include pxRem(height, 32);
+    @include pxRem(top, 117);
+    border: 1px solid map-get($color, bg-light-secondary);
+    color: map-get($color, blue-dark);
+    background-color: map-get($color, "white");
+    position: absolute;
+    transform: translateY(-50%);
+    &.btn-next {
+      left: calc(100% + 16px);
+    }
+    &.btn-prev {
+      right: calc(100% + 16px);
+    }
+    &:disabled {
+      background-color: map-get($color, grey-e);
+      opacity: 0.5;
+    }
+  }
+  .slider-dots {
+    @include flex-centered();
+    display: flex !important;
+    li {
+      @include pxRem(width, 8);
+      @include pxRem(height, 8);
+      @include pxRem(margin, 0 4);
+      border-radius: 50%;
+      background-color: map-get($color, bg-light-secondary);
+      transition: all 0.2s ease-in-out;
+      &.slick-active {
+        background-color: map-get($color, primary);
+      }
+      button {
+        width: inherit;
+        height: inherit;
+        opacity: 0;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+  .slick-list {
+    @include pxRem(border-radius, 6);
+    @include pxRem(margin-bottom, 16);
+    overflow: hidden;
+  }
+  .slider-item {
+    display: block !important;
+  }
+  .slider-media {
+    @include pxRem(height, 234);
+  }
+  .slider-caption {
+    @include animation(fade-in 0.5s forwards);
+    text-align: center;
+  }
+}

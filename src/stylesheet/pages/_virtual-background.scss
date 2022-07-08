@@ -1,0 +1,107 @@
+.virtual-background-selector {
+  @include pxRem(padding-bottom, 10);
+  margin-left: 0;
+  .virtual-background-container {
+    @include pxRem(padding, 20);
+    display: flex;
+    background-color: map-get($color, bg-light-primary);
+  }
+  .webcam-video {
+    @include pxRem(width, 270);
+    @include pxRem(height, 270);
+    @include pxRem(border-radius, 6);
+    @include pxRem(margin-right, 30);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: map-get($color, blue-dark);
+    overflow: hidden;
+    .user-video-stream {
+      border-radius: 0;
+    }
+    .msg {
+      @include pxRem(font-size, map-get($font-size, sm));
+      @include pxRem(padding, 0 27);
+      position: absolute;
+      text-align: center;
+      color: map-get($color, "white");
+    }
+  }
+  .virtual-background-options {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    @include pxRem(font-size, map-get($font-size, md));
+    @include pxRem(margin-bottom, 12);
+    @include pxRem(line-height, 25.2);
+  }
+  .background-options {
+    @include pxRem(max-height, 180);
+    @include pxRem(margin-bottom, 16);
+    max-width: calc(4 * 74px);
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4px;
+    overflow-y: scroll;
+    .option {
+      @include pxRem(height, 66);
+      @include pxRem(width, 66);
+      @include pxRem(max-width, 66);
+      @include pxRem(border-radius, 6);
+      @include pxRem(font-size, 22);
+      @include pxRem(margin, 4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1 0 calc(25% - 8px);
+      border: 2px solid transparent;
+      cursor: pointer;
+      color: map-get($color, "white");
+      background-color: map-get($color, grey-g);
+      background-size: auto 66px;
+      background-repeat: no-repeat;
+      background-position: center;
+      &.selected {
+        border-color: map-get($color, primary);
+      }
+      .svg-icon {
+        @include pxRem(width, 22);
+      }
+    }
+  }
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    .btn {
+      width: calc(50% - 5px);
+    }
+  }
+}
+
+.virtual-bg-resolver {
+  @include pxRem(width, 1);
+  @include pxRem(height, 1);
+  position: fixed;
+  bottom: 100%;
+  left: 0;
+  margin: 0 auto;
+  line-height: 0;
+  display: flex;
+  z-index: map-get($z-index, canvas);
+  .user-video-stream {
+    border-radius: 0;
+  }
+  .output-canvas {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .background-image {
+    display: none;
+  }
+}

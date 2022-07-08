@@ -1,0 +1,280 @@
+.personalized-view {
+  .setting-tabs {
+    @include pxRem(max-width, 340);
+    @include pxRem(min-width, 240);
+    width: 25%;
+    position: absolute;
+    left: 0;
+    height: 100vh;
+    border-right: 1px solid map-get($color, bg-light-secondary);
+    .nav-tabs {
+      @include pxRem(padding-top, 66);
+      display: block;
+      min-height: 100vh;
+    }
+  }
+  .setting-content {
+    max-width: calc(100% - 240px);
+    width: 75%;
+    margin-left: 25%;
+    overflow: auto;
+    .upload-group {
+      @include pxRem(border-radius, 4);
+    }
+  }
+  .nav-link {
+    @include pxRem(font-size, 16);
+    color: map-get($color, secondary);
+    height: auto;
+    font-weight: 600;
+    .icon {
+      @include pxRem(font-size, 20);
+      @include pxRem(width, 95);
+      @include pxRem(border-top-right-radius, 30);
+      @include pxRem(border-bottom-right-radius, 30);
+      display: flex;
+      justify-content: flex-end;
+      line-height: 0;
+    }
+    &.active {
+      color: map-get($color, primary);
+      .icon {
+        background-color: map-get($color, bg-light-secondary);
+      }
+    }
+  }
+  .tab-wrapper {
+    @include pxRem(padding, 0 143 0 60);
+  }
+  .list-members {
+    .media-body {
+      width: calc(100% - 190px);
+    }
+  }
+}
+
+.box-subscription {
+  .price {
+    @include pxRem(font-size, 48);
+    @include pxRem(line-height, 60);
+    color: map-get($color, primary);
+  }
+  .original-price {
+    color: map-get($color, purple-b);
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: map-get($color, "black");
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.tab-pane-content {
+  &.usage-table {
+    height: calc(100vh - 120px);
+  }
+}
+
+.scroll-box,
+.room-setting-box,
+.floor-setting {
+  .list-group {
+    overflow-y: scroll;
+  }
+}
+
+.scroll-box {
+  .list-group {
+    max-height: calc(100vh - 160px);
+  }
+}
+
+.room-setting-box {
+  .list-group {
+    @include pxRem(max-height, 300);
+  }
+}
+
+.floor-setting {
+  .list-group {
+    max-height: calc(100vh - 529px);
+  }
+}
+
+.room-setting {
+  .room-info {
+    padding: 0;
+    align-items: baseline;
+    &:hover,
+    &:active {
+      background: transparent;
+    }
+    .room-info-icon {
+      @include pxRem(margin-right, 10);
+    }
+    .room-info-name,
+    .room-info-url {
+      @include ellipsis-special();
+      max-width: 100%;
+    }
+    .room-info-name {
+      font-size: map-get($font-size, md);
+      text-align: left;
+    }
+    .room-info-url {
+      @include pxRem(margin-left, 5);
+      font-size: map-get($font-size, xs);
+      font-weight: 400;
+      color: map-get($color, grey-a);
+    }
+  }
+
+  .room-setting-form {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+.form-promo {
+  .form-group {
+    @include pxRem(margin-right, 8);
+    margin-bottom: 0;
+  }
+  .form-control {
+    @include pxRem(font-size, 16);
+    @include pxRem(padding, 4 15);
+    @include pxRem(width, 240);
+  }
+}
+
+.unsubscription-success-dlg {
+  @include flex-center-y();
+  flex-direction: column;
+  .modal-content {
+    padding-top: 0;
+  }
+  .modal-body {
+    padding: 0;
+    margin: 0;
+  }
+  .unsubscription-success-content {
+    text-align: center;
+    .title {
+      @include pxRem(margin-bottom, 15);
+    }
+    .btn {
+      @include pxRem(max-width, 145);
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+  .img-wrapper {
+    @include pxRem(padding, 60 0);
+    @include pxRem(margin-bottom, 30);
+    @include flex-centered();
+    background-color: map-get($color, primary);
+    img {
+      @include pxRem(max-width, 100);
+    }
+  }
+  .content {
+    @include pxRem(padding, 0 30);
+    @include pxRem(margin-bottom, 30);
+    @include pxRem(font-size, 14);
+    color: map-get($color, secondary);
+  }
+}
+
+.past-billing-wrapper {
+  @include pxRem(min-height, 260);
+  .data-table-wrapper {
+    @include pxRem(padding, 0 25);
+  }
+  .past-billing-table {
+    @include pxRem(height, 180);
+    border: none;
+    .table-scroll-body {
+      height: auto;
+    }
+    tr {
+      &:nth-of-type(odd) {
+        background-color: map-get($color, "white");
+      }
+    }
+    th, td {
+      @include pxRem(font-size, 16);
+      @include pxRem(padding, 25 20 25 0);
+      &:first-child {
+        @include pxRem(min-width, 120);
+      }
+      &:nth-child(2) {
+        @include pxRem(min-width, 120);
+      }
+      &:nth-child(3) {
+        @include pxRem(min-width, 120);
+      }
+      &:nth-child(4) {
+        @include pxRem(min-width, 100);
+      }
+    }
+    th {
+      font-weight: 400;
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.floor-setting {
+  .media-content {
+    width: 100%;
+  }
+  .media-body {
+    width: calc(100% - 80px);
+  }
+  .media-action {
+    @include pxRem(min-width, 50);
+  }
+  .media-status {
+    @include pxRem(width, 24);
+    @include pxRem(height, 24);
+    @include flex-centered();
+  }
+  .floor-name {
+    font-weight: 400;
+  }
+  .form-group  {
+    margin-bottom: 0;
+    .form-control {
+      @include pxRem(font-size, 15);
+      padding: 0;
+    }
+  }
+  .list-group-item {
+    @include pxRem(padding, 15 25);
+    &.success {
+      background-color: map-get($color, bg-success);
+      color: map-get($color, "green");
+    }
+    &.error {
+      background-color: map-get($color, bg-danger);
+      color: map-get($color, bg-red);
+    }
+  }
+}
+
+@include respond-below(large-max) {
+  .personalized-view {
+    .nav-link .icon {
+      @include pxRem(width, 60);
+    }
+  }
+}

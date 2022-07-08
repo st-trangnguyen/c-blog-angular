@@ -1,0 +1,378 @@
+%btn-circle {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  @include pxRem(font-size, map-get($font-size, normal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  .spinner {
+    & > .bounce {
+      background-color: currentColor;
+    }
+  }
+
+  &.btn-primary {
+    @include button-variant("white", primary, "", "", bg-hover);
+    &:disabled {
+      color: map-get($color, "white");
+      background-color: rgba($color: map-get($color, primary), $alpha: 0.4);
+    }
+  }
+  &.btn-secondary {
+    @include button-variant(primary, grey-e, grey-e, primary, bg-light-primary, bg-light-primary);
+    &:disabled {
+      color: map-get($color, disabled);
+      background-color: map-get($color, grey-e);
+    }
+  }
+  &.btn-outline {
+    @include button-variant(primary, "white", bg-light-secondary, primary, bg-light-primary, bg-light-secondary);
+    &:disabled {
+      color: map-get($color, disabled);
+      background-color: map-get($color, bg-light-primary);
+    }
+  }
+  &.btn-grey {
+    @include button-variant(primary, "grey-e", "grey-e", primary, "grey-e");
+  }
+  &.btn-grey-danger {
+    @include button-variant(danger, "grey-e", "grey-e", danger, "grey-e");
+  }
+  &.btn-danger {
+    color: map-get($color, "white");
+    background-color: map-get($color, "danger");
+  }
+  &.btn-danger-outline {
+    @include button-variant(danger, "white", bg-light-secondary, "white", danger, danger);
+  }
+  &.btn-lg {
+    @include pxRem(font-size, 16);
+    @include pxRem(height, 46);
+    @include pxRem(width, 400);
+    max-width: 100%;
+    padding: 0 20px;
+    font-weight: bold;
+  }
+  &.btn-xl {
+    @include pxRem(height, 46);
+  }
+  &.btn-sm {
+    @include pxRem(height, 40);
+  }
+  &.btn-xs {
+    @include pxRem(height, 24);
+    @include pxRem(font-size, map-get($font-size, xs));
+  }
+  &.btn-xxl {
+    @include pxRem(width, 400);
+    max-width: 100%;
+  }
+  &.btn-block {
+    width: 100%;
+  }
+  &.btn-icon {
+    @include pxRem(width, 30);
+    @include pxRem(height, 30);
+    @include flex-column-centered();
+  }
+  &.btn-rounded {
+    @include pxRem(border-radius, 25);
+  }
+  &:disabled {
+    cursor: default;
+  }
+  &.btn-circle-outline {
+    @include button-circle(primary, bg-light-primary, bg-light-secondary);
+    box-shadow: 0px 4px 6px rgba($color: map-get($color, "black"), $alpha: 0.1);
+    &.active {
+      background: map-get($color, primary);
+      color: map-get($color, "white");
+      border-color: map-get($color, primary);
+    }
+  }
+  &.btn-circle-tertiary {
+    @include button-circle(primary, bg-tertiary);
+  }
+  &.btn-circle-danger {
+    @include button-circle("white", "red", "red");
+    box-shadow: 0px 4px 6px rgba($color: map-get($color, "black"), $alpha: 0.1);
+    svg {
+      fill: map-get($color, "white");
+    }
+  }
+  &.btn-circle-primary {
+    @include button-circle("white", primary, primary);
+  }
+  &.btn-circle-white {
+    @include button-circle(primary, "white", bg-light-secondary);
+    box-shadow: 0px 4px 6px rgba($color: map-get($color, "black"), $alpha: 0.1);
+    &:hover {
+      background: map-get($color, primary);
+      border-color: map-get($color, primary);;
+      color: map-get($color, "white");
+    }
+  }
+  &.btn-circle-success {
+    @include button-circle(success, "", success);
+  }
+  &.btn-square-outline {
+    border: 1px solid map-get($color, bg-light-secondary);
+  }
+  &.btn-square-danger {
+    border: 1px solid map-get($color, bg-light-secondary);
+    color: map-get($color, danger);
+  }
+  &.btn-square-xl {
+    @include pxRem(width, 52);
+    @include pxRem(height, 52);
+  }
+  &.btn-square-lg {
+    @include pxRem(width, 42);
+    @include pxRem(height, 42);
+  }
+  &.btn-square-md {
+    @include pxRem(width, 40);
+    @include pxRem(height, 40);
+  }
+  &.btn-square-sm {
+    @include pxRem(width, 36);
+    @include pxRem(height, 36);
+  }
+  &.btn-square-xs {
+    @include pxRem(width, 30);
+    @include pxRem(height, 30);
+    @include pxRem(font-size, 10);
+  }
+  &.btn-square-xxs {
+    @include pxRem(width, 24);
+    @include pxRem(height, 24);
+    @include pxRem(font-size, 10);
+  }
+  &.btn-no-radius {
+    border-radius: 0;
+  }
+  .btn-tagline {
+    @include pxRem(font-size, 10);
+  }
+  &.btn-toggler {
+    @include button-variant(primary, "white", bg-light-secondary, "white", primary, 40, 22);
+    @include pxRem(min-width, 22);
+    @include pxRem(width, 22);
+    @include pxRem(height, 36);
+
+    &.btn-toggler-right {
+      @include pxRem(border-top-right-radius, 20);
+      @include pxRem(border-bottom-right-radius, 20);
+      border-left: none;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+  }
+  &.btn-outline-danger {
+    color: map-get($color, "danger");
+    border-color: map-get($color, "danger");
+  }
+  &.btn-split {
+    position: relative;
+    text-align: left;
+    white-space: nowrap;
+    .btn-text {
+      @include pxRem(margin-right, 10);
+    }
+    .btn-split-icon {
+      color: map-get($color, heading);
+    }
+    .btn-options {
+      @include pxRem(border-radius, 4);
+      position: absolute;
+      left: 0;
+      top: calc(100% + 5px);
+      max-height: 0;
+      background-color: map-get($color, "white");
+      border: 0px solid map-get($color, bg-light-primary);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      z-index: 10;
+      &.expanded {
+        @include pxRem(max-height, 200);
+        overflow: scroll;
+        border-width: 1px;
+      }
+      .option {
+        @include pxRem(padding, 8 12);
+        color: map-get($color, heading);
+      }
+    }
+  }
+  &.btn-accept-request,
+  &.btn-reject-request {
+    @include pxRem(width, 32);
+    @include pxRem(height, 32);
+    @include pxRem(font-size, 12);
+    border-radius: 50%;
+    color: map-get($color, "white");
+  }
+  &.btn-accept-request {
+    background: map-get($color, success);
+  }
+  &.btn-reject-request {
+    background: map-get($color, danger);
+  }
+}
+
+.btn-close {
+  @include button-variant("danger", bg-light-primary, "", "white", "danger");
+  @include pxRem(width, 42);
+  @include pxRem(height, 42);
+  @include pxRem(font-size, 12);
+  border-radius: 50%;
+  min-width: auto;
+}
+
+.btn-custom-wrapper {
+  @include pxRem(margin-left, -10);
+  position: relative;
+  display: inline-flex;
+  &.active {
+    .btn,
+    .btn:focus,
+    .btn:hover {
+      @include pxRem(top, 6);
+      @include pxRem(left, 6);
+      font-weight: 800;
+      .btn-title {
+        color: map-get($color, primary);
+      }
+    }
+  }
+  .btn-title {
+    @include pxRem(padding, 0 10);
+    color: map-get($color, secondary);
+    text-align: left;
+    transition: color 0.2s ease-in-out;
+  }
+  .btn {
+    position: relative;
+    justify-content: space-between;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transition: all 0.15s ease-in-out;
+    &:hover {
+      .btn-title {
+        color: map-get($color, secondary);
+      }
+      &.btn-outline {
+        background-color: map-get($color, "white");
+        color: map-get($color, primary);
+      }
+    }
+  }
+  .btn-outline {
+    @include pxRem(height, 60);
+    @include pxRem(min-width, 260);
+    width: 100%;
+    border: 2px solid map-get($color, primary);
+  }
+  .btn-shadow {
+    @include pxRem(top, 10);
+    @include pxRem(left, 10);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: map-get($color, purple-d);
+    z-index: 0;
+  }
+  .prefix-icon,
+  .arrow-icon {
+    @include flex-center-y();
+  }
+  .prefix-icon {
+    @include pxRem(font-size, 25);
+  }
+  .arrow-icon {
+    @include pxRem(font-size, 40);
+  }
+}
+
+.switch-buttons {
+  display: flex;
+  .btn {
+    @include pxRem(padding, 8 22);
+    color: map-get($color, grey-l);
+    border: 1px solid map-get($color, bg-light-secondary);
+    border-left-width: 0;
+    &-active {
+      color: map-get($color, primary);
+      background-color: map-get($color, bg-light-primary);
+    }
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-left-width: 1px;
+    }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.btn-social-sign-in {
+  @include button-variant(grey-l, "white", bg-light-secondary, grey-l, "white", bg-light-secondary);
+  width: 100% !important;
+}
+
+@media (hover: hover) {
+  .btn-custom-wrapper {
+    .btn:hover {
+      @include pxRem(top, 6);
+      @include pxRem(left, 6);
+    }
+  }
+}
+
+@include respond-below(largest) {
+  .btn-custom-wrapper {
+    @include pxRem(width, 215);
+    .btn-outline {
+      @include pxRem(min-width, 200 !important);
+      @include pxRem(padding, 0 10);
+    }
+  }
+}
+
+@include respond-below(medium) {
+  .btn-custom-wrapper {
+    .btn-outline {
+      @include pxRem(height, 50 !important);
+    }
+  }
+}
+
+@include respond-below(small) {
+  .btn-custom-wrapper {
+    .btn-title {
+      @include pxRem(font-size, 13);
+    }
+    .prefix-icon {
+      @include pxRem(font-size, 20);
+    }
+    .arrow-icon {
+      @include pxRem(font-size, 30);
+    }
+  }
+}

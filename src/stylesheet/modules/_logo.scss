@@ -1,0 +1,17 @@
+.img {
+  &-rounded {
+    @include pxRem(border-radius, map-get($border-radius, md));
+  }
+  &-md {
+    @include pxRem(width, 36);
+    @include pxRem(height, 36);
+  }
+  &-lg {
+    @include pxRem(width, 65);
+    @include pxRem(height, 65);
+  }
+}
+
+.brand-logo {
+  @include pxRem(height, 30);
+}

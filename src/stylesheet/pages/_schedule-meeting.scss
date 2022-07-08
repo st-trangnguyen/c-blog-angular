@@ -1,0 +1,322 @@
+.schedule-meeting-container {
+  @include pxRem(padding, 35 65);
+  width: 100%;
+  .schedule-meeting-header {
+    @include pxRem(margin-bottom, 45);
+    display: flex;
+    justify-content: space-between;
+    .button-group {
+      display: flex;
+      align-items: center;
+      .btn {
+        text-transform: capitalize;
+        &:first-child {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+        &:nth-child(2) {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+        &.btn-primary {
+          border: 1px solid map-get($color, primary);
+        }
+      }
+    }
+  }
+  .form-schedule-meeting {
+    .schedule-meeting-title {
+      @include pxRem(margin-bottom, 24);
+      display: flex;
+      width: 100%;
+      .form-group {
+        @include pxRem(margin-right, 35);
+      }
+      .form-group,
+      .input-group {
+        width: 100%;
+      }
+      .form-control {
+        @include pxRem(font-size, map-get($font-size, xl));
+        padding-left: 0;
+      }
+      .btn {
+        @include pxRem(width, 146);
+      }
+    }
+    .form-content {
+      @include pxRem(max-width, 660);
+      @include pxRem(padding-right, 65);
+      width: 60%;
+      .form-control {
+        @include pxRem(max-width, 100%);
+        @include pxRem(width, 535);
+        &.select {
+          @include pxRem(width, 275);
+        }
+      }
+      .form-group,
+      .editor {
+        @include pxRem(padding-left, 36);
+        &.has-error {
+          @include pxRem(margin-bottom, 35);
+          .msg-error {
+            display: block;
+          }
+        }
+      }
+      .form-group {
+        flex-wrap: wrap;
+      }
+    }
+    .react-datepicker-wrapper {
+      @include pxRem(margin-right, 15);
+      width: auto;
+      &:last-child {
+        margin-right: 0;
+      }
+      .input-date,
+      .input-time {
+        background-color: map-get($color, "white");
+        text-align: left;
+        white-space: nowrap;
+        cursor: pointer;
+        &:disabled {
+          cursor: default;
+        }
+      }
+      .input-date {
+        @include pxRem(width, 275);
+      }
+      .input-time {
+        @include pxRem(width, 104);
+        text-transform: lowercase;
+      }
+    }
+    .timezone-select,
+    .room-link-box {
+      @include pxRem(max-width, 100%);
+      @include pxRem(width, 535);
+    }
+    .room-link-box {
+      @include pxRem(height, 46);
+      border-color: map-get($color, bg-light-secondary);
+      .room-link {
+        @include pxRem(margin, 0 15);
+        white-space: nowrap;
+      }
+      .btn {
+        @include pxRem(min-width, 45);
+        border-radius: 0;
+        height: 100%;
+      }
+      & + .msg-error {
+        position: absolute;
+        top: 100%;
+        z-index: 2;
+        display: none;
+        .txt-link-underline {
+          @include pxRem(margin-left, 5);
+          cursor: pointer;
+        }
+      }
+    }
+    .editor {
+      @include pxRem(width, 571);
+      max-width: 100%;
+      .tox-editor-header {
+        z-index: 0;
+      }
+      .tox-toolbar__primary {
+        border-top: none !important;
+      }
+    }
+  }
+  .meeting-participants {
+    width: calc(100% - 660px);
+    .participant-search {
+      @include pxRem(margin-bottom, 10);
+      position: relative;
+      .search-results {
+        @include pxRem(border-radius, 4);
+        @include pxRem(margin-top, 5);
+        @include pxRem(padding, 4 0);
+        @include pxRem(min-height, 50);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: map-get($color, "white");
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+        .participant-list {
+          margin-bottom: 0;
+        }
+        .participant-item {
+          &.selected {
+            background-color: rgba($color: map-get($color, success), $alpha: 0.1);
+          }
+        }
+      }
+    }
+    .form-input {
+      outline: none;
+      &:focus-visible {
+        border-color: map-get($color, primary);
+      }
+    }
+    .btn-icon {
+      @include pxRem(font-size, map-get($font-size, sm));
+      color: map-get($color, icon);
+    }
+    .participant-list {
+      @include pxRem(margin-bottom, 25);
+      overflow: auto;
+
+    }
+  }
+}
+.popup-event-detail {
+  position: absolute !important;
+  z-index: 10002;
+}
+.calendar-popup {
+  @include pxRem(border-radius, 5);
+  @include pxRem(padding, 12 16);
+  @include pxRem(margin-left, 10);
+  @include pxRem(max-width, 258);
+  @include pxRem(max-height, 300);
+  overflow: auto;
+  background-color: map-get($color, "white");
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  .popup-header {
+    @include flex-center-end();
+    .btn {
+      @include pxRem(font-size, 12);
+      width: auto;
+      height: auto;
+      color:rgba(0, 0, 0, 0.54);
+      &.btn-close {
+        @include pxRem(font-size, 10);
+        background-color: transparent;
+        padding: 0;
+        position: relative;
+        &::before {
+          content: "";
+          width: 1px;
+          position: absolute;
+          top: 0;
+          height: 100%;
+          right: calc(100% + 12px);
+          background-color: map-get($color, bg-light-secondary);
+        }
+      }
+    }
+  }
+  .popup-body {
+    @include pxRem(margin-top, 10);
+    max-height: 90%;
+  }
+  .title {
+    @include pxRem(font-size, map-get($font-size, md));
+    @include pxRem(margin-bottom, 5);
+    @include pxRem(line-height, 21);
+    @include ellipsis-special(1);
+  }
+  .event-time {
+    @include pxRem(font-size, map-get($font-size, sm));
+    @include pxRem(margin-bottom, 12);
+  }
+  .event-actions {
+    @include pxRem(margin-bottom, 10);
+    @include flex-center-y();
+    position: relative;
+    overflow: hidden;
+    .room-url {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+    }
+    .btn-join {
+      @include pxRem(min-width, 190);
+    }
+    .icon-copy {
+      position: relative;
+      color:rgba(0, 0, 0, 0.54);
+      cursor: pointer;
+      line-height: 0;
+    }
+  }
+  .participant-item {
+    cursor: default;
+    padding-left: 0;
+    padding-right: 0;
+    &:hover {
+      background: transparent;
+    }
+    .media-body {
+      width: 100%;
+    }
+  }
+  .event-participants-dropdown {
+    @include pxRem(margin, 16 0);
+    &.dropdown-expanded {
+      .dropdown-toggle span {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        height: 100%;
+        transition: max-height 0.25s ease-in-out;
+        overflow: auto;
+      }
+    }
+    .dropdown-toggle {
+      @include pxRem(font-size, map-get($font-size, sm));
+      font-weight: 400;
+      span {
+        @include pxRem(font-size, map-get($font-size, xs));
+        @include pxRem(margin-left, 10);
+        line-height: 0;
+      }
+    }
+    .dropdown-menu {
+      @include pxRem(margin-top, 8);
+      height: 0;
+      transition: max-height 0.3s ease-in-out;
+      overflow: hidden;
+      .participant-list {
+        max-height: none;
+      }
+    }
+  }
+  .event-description {
+    @include pxRem(margin-top, 16);
+    @include pxRem(padding-top, 16);
+    @include pxRem(font-size, map-get($font-size, sm));
+    border-top: 1px solid map-get($color, bg-light-secondary);
+    ol, ul {
+      padding-left: 0;
+      list-style-position: inside;
+      margin-left: 0.5em;
+    }
+  }
+}
+
+@include respond-below(large-max) {
+  .form-schedule-meeting {
+    .icon {
+      @include pxRem(top, 12);
+      & + .react-datepicker-wrapper {
+        @include pxRem(margin-bottom, 10);
+        margin-right: 0;
+        width: 100%;
+        .form-control {
+          width: 100%;
+        }
+      }
+    }
+    .meeting-participants {
+      width: 100%;
+    }
+  }
+}

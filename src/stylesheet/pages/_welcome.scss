@@ -1,0 +1,481 @@
+.welcome-page {
+  @include pxRem(font-size, 16);
+  @include pxRem(line-height, 24);
+  font-family: $font-poppins;
+  font-weight: 400;
+  background-color: map-get($color, white-a);
+  .container {
+    @include pxRem(max-width, 1320);
+  }
+  h1, h3 {
+    font-weight: 800;
+  }
+  .btn,
+  input {
+    font-family: $font-poppins;
+    font-weight: 400;
+    .btn-text {
+      font-weight: 800;
+    }
+  }
+  .page-header {
+    background: map-get($color, purple-c);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    transition: all 0.3s ease-in-out;
+    &.has-scrolled {
+      background-color: map-get($color, "white");
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .1);
+      animation-delay: 1s;
+      animation: fadeInDown 0.5s ease-in both;
+    }
+    .navbar-brand-sp {
+      display: none;
+      svg {
+        display: block;
+      }
+    }
+  }
+  .navbar-brand {
+    @include pxRem(font-size, 30);
+  }
+  .navbar {
+    @include pxRem(height, 50);
+    @include flex-center-between();
+  }
+  .navbar-nav {
+    @include flex-center-y();
+    li {
+      @include pxRem(padding, 0 18);
+      @include pxRem(font-size, 16);
+      font-weight: 400;
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+    .btn-get-access {
+      @include pxRem(height, 50);
+      @include pxRem(border-radius, 0);
+      @include pxRem(width, 173);
+      @include pxRem(font-size, 15);
+      border-radius: 0;
+      flex-direction: column;
+    }
+    .btn-icon {
+      color: map-get($color, primary);
+    }
+  }
+  .page-content {
+    @include pxRem(margin-top, 50);
+  }
+  .page-footer {
+    background: map-get($color, primary);
+    .navbar-brand {
+      @include pxRem(font-size, 35);
+    }
+    .navbar {
+      @include pxRem(height, 60);
+      @include flex-center-between();
+      color: map-get($color, "white");
+    }
+    .navbar-nav {
+      li {
+        @include pxRem(font-size, 16);
+      }
+    }
+    .social-list li {
+      line-height: 0;
+      &:nth-child(2) {
+        @include pxRem(margin, 0 30);
+      }
+    }
+  }
+  h1 {
+    @include pxRem(font-size, 50);
+    @include pxRem(margin-bottom, 30);
+    color: map-get($color, black-a);
+  }
+  h1 p, h3 p {
+    @include respond-above(wide) {
+      display: inline-block;
+      &:first-child {
+        @include pxRem(margin-right, 10);
+      }
+    }
+  }
+  .page-section {
+    @include pxRem(padding, 80 0 70);
+    color: map-get($color, black-b);
+    .block-content {
+      @include pxRem(font-size, 20);
+      @include pxRem(max-width, 478);
+      @include pxRem(letter-spacing, 0.2);
+      line-height: 1.5;
+    }
+    &.special-section {
+      @include pxRem(padding, 45 0);
+      background: map-get($color, bg-blue-dark);
+      color: map-get($color, "white");
+      h3 {
+        color: map-get($color, "white");
+      }
+      .block-content {
+        max-width: none;
+      }
+      .btn-title {
+        margin-left: 0;
+      }
+    }
+  }
+  .introduction {
+    @include pxRem(padding, 35 0 70);
+    text-align: center;
+    h1 {
+      @include pxRem(letter-spacing, -0.75);
+      line-height: 100%;
+    }
+    .btn-get-access {
+      background: map-get($color, purple-f);
+    }
+    .tagline {
+      @include pxRem(margin, 21 0 60);
+      @include pxRem(font-size, 17);
+      @include pxRem(letter-spacing, 0.2);
+      color: map-get($color, black-b);
+      text-align: left;
+      line-height: 1.5;
+    }
+    .form {
+      justify-content: space-between;
+      .input-group,
+      input {
+        height: 100%;
+      }
+      .input {
+        @include pxRem(padding, 0 20);
+      }
+      .msg-error {
+        @include pxRem(margin-top, 6);
+        padding: 0;
+        background: transparent;
+        text-align: left;
+        &::after {
+          display: none;
+        }
+      }
+    }
+    .section-image {
+      @include pxRem(margin, 60 auto 0);
+      @include pxRem(width, 800);
+      @include pxRem(height, 500);
+      max-width: 100%;
+      position: relative;
+      z-index: 10;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  .block-heading {
+    .tagline {
+      @include pxRem(font-size, 20);
+      line-height: 1.5;
+    }
+    h3 {
+      @include pxRem(font-size, 36);
+      @include pxRem(margin-bottom, 27);
+      @include pxRem(letter-spacing, -0.9);
+      line-height: 108%;
+      color: map-get($color, black-a);
+      p {
+        @include pxRem(line-height, 42);
+      }
+    }
+  }
+}
+
+.shape {
+  @include filter(blur, 40px);
+  position: absolute;
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+  animation: burst 7s infinite;
+  &.burst-red {
+    width: 40%;
+    height: 60%;
+    @include pxRem(top, 15);
+    @include pxRem(left, -30);
+    @include pxRem(border-radius, 250);
+    background: map-get($color, red-a);
+    z-index: -1;
+    transform: translateY(-50%);
+    animation-direction: reverse;
+  }
+  &.burst-orange {
+    width: 40%;
+    height: 60%;
+    @include pxRem(bottom, -40);
+    @include pxRem(right, -70);
+    @include pxRem(border-radius, 160);
+    background: map-get($color, "orange");
+    z-index: -2;
+    animation-direction: reverse;
+  }
+  &.burst-blue {
+    width: 40%;
+    height: 60%;
+    @include pxRem(border-radius, 160);
+    @include pxRem(right, -40);
+    top: 0;
+    background: map-get($color, "blue");
+    z-index: -3;
+    animation-delay: 3s;
+  }
+  &.burst-purple {
+    width: 50%;
+    height: 80%;
+    @include pxRem(border-radius, 160);
+    @include pxRem(bottom, -50);
+    @include pxRem(left, -20);
+    background: map-get($color, purple-e);
+    z-index: -4;
+  }
+}
+
+@include respond-between(super-largest, pc) {
+  .welcome-page {
+    .introduction {
+      .tagline {
+        @include pxRem(margin, 21 0 35);
+      }
+      .section-image {
+        @include pxRem(margin, 35 auto 0);
+      }
+    }
+  }
+}
+
+@include respond-below(super-largest) {
+  .welcome-page {
+    h1 {
+      @include pxRem(font-size, 50);
+      @include pxRem(margin-bottom, 10);
+    }
+    .introduction {
+      @include pxRem(padding, 20 0 40);
+      .tagline {
+        @include pxRem(margin, 12 0 35);
+      }
+      .section-image {
+        @include pxRem(margin, 35 auto 0);
+        @include pxRem(width, 700);
+        @include pxRem(height, 410);
+      }
+    }
+  }
+}
+
+@include respond-below(largest) {
+  .welcome-page {
+    .introduction {
+      .tagline {
+        @include pxRem(font-size, 16);
+        @include pxRem(margin, 10 0 25);
+      }
+    }
+  }
+}
+
+@include respond-below(wide) {
+  .welcome-page {
+    h1 {
+      @include pxRem(font-size, 40);
+    }
+    .navbar-nav {
+      .btn-get-access {
+        @include pxRem(font-size, 14);
+      }
+    }
+    .page-section {
+      @include pxRem(padding, 20 0);
+      .block-content {
+        @include pxRem(margin-bottom, 30);
+        @include pxRem(font-size, 16);
+        max-width: none;
+      }
+      .btn-custom-wrapper {
+        width: 60%;
+      }
+      &.special-section {
+        @include pxRem(padding, 20 0);
+      }
+      .row-revert {
+        flex-direction: column-reverse;
+      }
+    }
+    .block-heading {
+      .tagline {
+        @include pxRem(font-size, 20);
+      }
+      h3 {
+        @include pxRem(font-size, 30);
+        @include pxRem(margin-bottom, 30);
+        p {
+          @include pxRem(line-height, 36);
+        }
+      }
+    }
+    .introduction {
+      .tagline {
+        @include pxRem(font-size, 14);
+      }
+    }
+  }
+}
+
+@include respond-below(medium) {
+  .welcome-page {
+    @include pxRem(font-size, 14);
+    @include pxRem(line-height, 22);
+    .container {
+      @include pxRem(padding, 0 18);
+    }
+    .page-header,
+    .page-footer {
+      .navbar-nav {
+        li, .btn {
+          @include pxRem(font-size, 14);
+        }
+      }
+    }
+    .page-header {
+      .navbar-brand {
+        display: none;
+      }
+      .navbar-brand-sp {
+        display: block;
+      }
+    }
+    .navbar-nav {
+      li {
+        @include pxRem(padding, 0 15);
+        display: block;
+      }
+    }
+    .page-footer {
+      .navbar {
+        flex-direction: column;
+        @include pxRem(height, 200);
+        align-items: center;
+        justify-content: center;
+      }
+      .navbar-nav {
+        @include pxRem(margin, 30 0);
+      }
+    }
+    h1 {
+      @include pxRem(font-size, 30);
+    }
+    .page-section {
+      .btn-custom-wrapper {
+        width: 80%;
+      }
+      .block-content {
+        @include pxRem(font-size, 14);
+      }
+    }
+    .introduction .section-image {
+      height: auto;
+    }
+    .block-btn-group {
+      margin-top: 0;
+    }
+  }
+}
+
+@include respond-below(small) {
+  .welcome-page {
+    .introduction {
+      @include pxRem(padding, 20 0);
+      .tagline {
+        @include pxRem(margin, 5 0 15);
+      }
+      .form-group {
+        width: 80%;
+        margin-bottom: 15px;
+      }
+      .form.form-inline {
+        flex-direction: column;
+        align-items: center;
+        border: 0;
+        height: auto;
+        .msg-error {
+          width: 100%;
+        }
+      }
+      .form-control {
+        border: 1px solid map-get($color, primary);
+        @include pxRem(font-size, 14);
+        @include pxRem(padding, 12 18);
+        border-radius: 0;
+      }
+      .btn {
+        width: 180px;
+        height: 50px;
+      }
+    }
+    .block-heading {
+      h3 {
+        @include pxRem(font-size, 18);
+        margin-bottom: 15px;
+      }
+      .tagline {
+        @include pxRem(font-size, 14);
+      }
+    }
+  }
+}
+
+@include respond-below(smallest) {
+  .welcome-page {
+    h1 {
+      @include pxRem(font-size, 25);
+    }
+    .introduction {
+      .tagline {
+        @include pxRem(font-size, 12);
+        @include pxRem(line-height, 18);
+      }
+      .btn {
+        height: 40px;
+      }
+    }
+    .block-heading {
+      h3 {
+        @include pxRem(font-size, 16);
+        margin-bottom: 10px;
+      }
+      .tagline {
+        @include pxRem(font-size, 12);
+      }
+    }
+    .page-section {
+      .block-content {
+        @include pxRem(font-size, 12);
+      }
+    }
+    .page-footer {
+      .navbar {
+        height: 150px;
+      }
+      .navbar-nav {
+        margin: 15px 0;
+      }
+    }
+    .introduction .section-image {
+      margin-top: 15px;;
+    }
+  }
+}

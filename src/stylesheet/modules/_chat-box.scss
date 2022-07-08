@@ -1,0 +1,211 @@
+$chat-box-header: 50px;
+$chat-box-footer: 54px;
+
+.chat-box-wrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+}
+.chat-box-header {
+  @include pxRem(height, #{$chat-box-header});
+  @include flex-center-between();
+  @include pxRem(padding, 0 20);
+  background: map-get($color, "white");
+  border-bottom: 1px solid map-get($color, bg-light-secondary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  h6 {
+    @include pxRem(font-size, 18);
+    margin: 0;
+  }
+  .icon {
+    line-height: 1;
+  }
+  .name {
+    @include ellipsis-special();
+    max-width: 100%;
+  }
+  .msg-load-more {
+    background-color: map-get($color, bg-light-primary);
+    text-align: center;
+  }
+  .tooltip-tip {
+    white-space: pre-wrap;
+  }
+}
+
+.chat-box-content {
+  @include pxRem(padding, 0 10);
+  @include pxRem(margin, #{$chat-box-header} 0 #{$chat-box-footer});
+  height: calc(100% - #{$chat-box-header} - #{$chat-box-footer});
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex: 1;
+  flex-direction: column-reverse;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.msg-list {
+  @include pxRem(margin-bottom, 10);
+}
+.msg-item {
+  @include pxRem(padding-top, 10);
+  &.msg-following {
+    @include pxRem(padding-top, 2);
+    .msg-sender-avatar {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .msg-info {
+      display: none;
+    }
+  }
+  &.is-owner {
+    .msg-content {
+      color: map-get($color, "white");
+      background-color: map-get($color, primary);
+      a {
+        color: map-get($color, "white");
+      }
+    }
+  }
+  &.is-sending {
+    opacity: 0.6;
+  }
+}
+.msg-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: calc(100% - 40px);
+}
+.msg-sender-name {
+  @include pxRem(font-size, map-get($font-size, sm));
+  @include pxRem(padding-right, 5);
+  font-weight: 700;
+}
+.msg-time {
+  @include pxRem(font-size, map-get($font-size, xs));
+  color: map-get($color, grey-a);
+}
+.editor-content {
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 100%;
+  .pasted-data {
+    @include pxRem(font-size, 14);
+    font-weight: 400;
+    border: none;
+    padding: 0;
+    color: map-get($color, secondary);;
+    background-color: transparent;
+  }
+  code {
+    @include pxRem(padding, 0 5);
+    @include pxRem(border-radius, 3);
+    color: map-get($color, red-b);
+    border: 1px solid #DDDDDD;
+    background-color: rgba(29, 28, 29, 0.04);
+  }
+  em {
+    font-style: italic;
+  }
+  ul, ol {
+    display: block;
+    padding-left: 1rem;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  blockquote {
+    border-left: 2px solid map-get($color, grey-m);
+    padding-left: 1rem;
+  }
+  a {
+    color: map-get($color, primary);
+    text-decoration: underline;
+  }
+}
+.msg-content {
+  @include pxRem(font-size, map-get($font-size, xs));
+  @include pxRem(padding, 8);
+  @include pxRem(border-radius, 2 8 8 2);
+  @include pxRem(min-width, 45);
+  // @include pxRem(line-height, 16);
+  background-color: map-get($color, bg-tertiary);
+}
+.msg-activity {
+  .avatar {
+    @include pxRem(padding, 4);
+  }
+  .msg-content {
+    background: map-get($color, "white");
+  }
+}
+
+.chat-box-footer {
+  @include pxRem(min-height, #{$chat-box-footer});
+  @include pxRem(padding, 0 10);
+  @include flex-center-y();
+  @include pxRem(min-height, map-get($layout , footer));
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid map-get($color, bg-light-secondary);
+  .form-chat {
+    @include pxRem(padding, 7 0);
+    position: relative;
+    width: 100%;
+    background-color: map-get($color, bg-light-primary);
+    .form-group {
+      @include pxRem(padding, 11 45 11 16);
+      @include pxRem(border-radius, 25);
+      @include pxRem(min-height, 44);
+      display: flex;
+      align-items: center;
+      margin: 0;
+      background-color: map-get($color, "white");
+      border: 1px solid map-get($color, bg-light-secondary);
+    }
+    .form-chat-control {
+      @include pxRem(font-size, 12);
+      @include pxRem(line-height, 15.06);
+      display: block;
+      width: 100%;
+      resize: none;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    .form-chat-btn {
+      @include pxRem(bottom, 11);
+      @include pxRem(right, 5);
+      position: absolute;
+      z-index: 2;
+    }
+    &.form-rich-text {
+      .form-chat-btn {
+        @include pxRem(font-size, 16);
+        @include pxRem(bottom, 7);
+        @include pxRem(right, 15);
+        @include pxRem(height, 40);
+        color: map-get($color, primary);
+        &:disabled {
+          color: map-get($color, grey-a);
+          opacity: 40%;
+        }
+      }
+    }
+  }
+}

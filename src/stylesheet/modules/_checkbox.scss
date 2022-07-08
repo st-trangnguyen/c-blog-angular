@@ -1,0 +1,106 @@
+$animate: cubic-bezier(.4, .0, .23, 1);
+
+.custom-checkbox {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  & + label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: color 250ms $animate;
+  }
+  & + label > span {
+    @include pxRem(width, 18);
+    @include pxRem(height, 18);
+    @include pxRem(border-radius, 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 2px solid map-get($color, bg-light-secondary);
+    cursor: pointer;
+    transition: all 250ms $animate;
+  }
+
+  &:checked + label > span {
+    border: 2px solid map-get($color, primary);
+    animation: shrink-bounce 200ms $animate;
+    background-color: map-get($color, primary);
+  }
+
+  &:checked + label > span:before{
+    content: "";
+    position: absolute;
+    top: 55%;
+    left: 40%;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    animation: checkbox-check 125ms 250ms $animate forwards;
+  }
+
+  &:disabled + label > span {
+    border: 2px solid rgba(163, 163, 163, 0.6);
+    cursor: not-allowed;
+  }
+}
+
+.form-checkbox-custom input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+  &:disabled {
+    cursor: default;
+  }
+  &:disabled + label {
+    cursor: default;
+    color: map-get($color, disabled);
+    &:before {
+      cursor: default;
+    }
+  }
+}
+
+.form-checkbox-custom label {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.form-checkbox-custom label:before {
+  content:'';
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid map-get($color, bg-light-secondary);
+  border-radius: 2px;
+  padding: 7px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.form-checkbox-custom input:checked + label::before {
+  background-color: map-get($color, primary);
+  border: 2px solid map-get($color, primary);
+}
+
+.form-checkbox-custom input:checked + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  width: 3px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

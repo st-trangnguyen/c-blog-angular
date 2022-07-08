@@ -1,0 +1,177 @@
+.modal {
+  // @include animation(fade-out 0.5s forwards);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: map-get($color, bg-dialog);
+  z-index: map-get($z-index, dialog);
+  display: none;
+  &.show {
+    // @include animation(fade-in 0.5s forwards);
+    display: block;
+    // .modal-dialog {
+    //   @include animation(slide-in 0.5s forwards);
+    // }
+  }
+
+  &.modal-no-transform {
+    &.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-dialog-centered {
+      position: static;
+      transform: none;
+    }
+  }
+
+  .modal-dialog {
+    display: flex;
+    justify-content: center;
+    max-width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    &.modal-dialog-top {
+      @include pxRem(margin, 35 auto);
+      top: 0;
+      transform: translateX(-50%);
+    }
+  }
+
+
+  .modal-content {
+    @include pxRem(border-radius, map-get($border-radius, md));
+    @include pxRem(width, 564);
+    @include pxRem(min-width, 300);
+    @include pxRem(padding, 32 0);
+    max-width: 100%;
+    background: map-get($color, "white");
+    overflow: auto;
+    &.modal-content-auto {
+      width: auto;
+    }
+    &.modal-content-full {
+      width: 100%;
+    }
+    &.modal-content-md {
+      @include pxRem(width, 565);
+    }
+
+    .title {
+      margin-bottom: 0;
+    }
+  }
+
+  .modal-header {
+    @include flex-center-between();
+    @include pxRem(margin, 0 32 16);
+  }
+
+  .modal-footer {
+    @include flex-center-end();
+    @include pxRem(margin, 24 32 0);
+    button {
+      @include pxRem(padding, 0 40);
+      @include pxRem(min-width, 146);
+      font-weight: normal;
+      &:not(:last-child) {
+        @include pxRem(margin-right, 20);
+      }
+    }
+
+    &.modal-footer-reverse {
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+      button {
+        &:not(:first-child) {
+          @include pxRem(margin-right, 20);
+        }
+        &:not(:last-child) {
+          @include pxRem(margin-right, 0);
+        }
+      }
+    }
+  }
+
+  .modal-title {
+    @include pxRem(font-size, 16);
+    margin: 0;
+  }
+
+  .modal-body {
+    @include pxRem(margin, 0 32);
+    text-align: left;
+    .alert-content {
+      @include pxRem(min-height, 100);
+    }
+  }
+}
+
+.simple-popup {
+  @include pxRem(padding, 15 20);
+  color: map-get($color, heading);
+  .title {
+    @include pxRem(line-height, 20);
+    @include pxRem(margin-bottom, 5);
+    font-weight: 600;
+  }
+  .content {
+    @include pxRem(margin-bottom, 20);
+    @include pxRem(font-size, map-get($font-size, sm));
+  }
+  .btn-groups {
+    display: flex;
+    justify-content: flex-end;
+    .btn {
+      @include pxRem(font-size, map-get($font-size, sm));
+      @include pxRem(min-width, 53);
+      @include pxRem(height, 24);
+      min-width: auto;
+    }
+
+  }
+}
+
+@include respond-below(medium) {
+  .modal {
+    .model-content {
+      .title {
+        @include pxRem(font-size, 16);
+      }
+    }
+    .modal-body {
+      @include pxRem(font-size, 14);
+    }
+    .modal-footer {
+      .btn {
+        @include pxRem(min-width, 95);
+      }
+    }
+  }
+}
+
+@include respond-below(small) {
+  .modal {
+    .modal-header,
+    .modal-footer {
+      @include pxRem(margin, 0 20);
+    }
+    .modal-body {
+      @include pxRem(padding, 24 20);
+      margin: 0;
+    }
+    .modal-footer {
+      .btn {
+        @include pxRem(padding, 0 25);
+      }
+    }
+  }
+}

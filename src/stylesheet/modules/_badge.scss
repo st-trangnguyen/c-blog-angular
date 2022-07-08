@@ -1,0 +1,34 @@
+.badge {
+  @include flex-centered();
+  @include pxRem(border-radius, 20);
+  @include pxRem(font-size, map-get($font-size, xs));
+  color: map-get($color, primary);
+  background: map-get($color, bg-primary);
+  line-height: 1;
+  &-xs {
+    @include pxRem(border-radius, 2);
+    @include pxRem(padding, 2);
+  }
+  &-sm {
+    @include pxRem(min-width, 18);
+    @include pxRem(width, 18);
+    @include pxRem(min-height, 18);
+    @include pxRem(height, 18);
+  }
+  &-md {
+    @include pxRem(padding, 6);
+    @include pxRem(min-width, 39);
+    @include pxRem(height, 20);
+  }
+  &-success {
+    color: map-get($color, "white");
+    background-color: map-get($color, "green");
+  }
+  &-danger {
+    color: map-get($color, "white");
+    background-color: map-get($color, bg-red);
+  }
+  &-circle {
+    border-radius: 50%;
+  }
+}

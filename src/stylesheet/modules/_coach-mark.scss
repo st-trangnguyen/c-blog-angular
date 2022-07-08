@@ -1,0 +1,103 @@
+$tooltip-move : 10;
+$tooltip-height : 8;
+$tooltip-shift : -($tooltip-height + $tooltip-height);
+
+.harsh-coach-mark {
+  // border: 1px solid map-get($color, white-transparent);
+  // box-sizing: border-box;
+  display: block;
+  position: fixed;
+  z-index: 13;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  // box-shadow: 0px 0px 0px 2000px rgba(0, 0, 0, 0.5);
+  // transition: all .3s ease-out;
+  // border-radius: 50%
+}
+
+.hcm-tooltip-base {
+  @include pxRem(padding, 10 15);
+  @include pxRem(border-radius, 4);
+  @include flex-center-y();
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 14;
+  background-color: map-get($color, white-transparent);
+  transition: all .3s ease-out;
+  & + .harsh-coach-mark {
+    display: none;
+  }
+  .hcm-tooltip-button {
+    @include pxRem(padding-left, 15);
+    border-left: 1px solid map-get($color, grey-f);
+    .btn {
+      @include pxRem(min-width, 43);
+      width: auto;
+      @include pxRem(font-size, 14);
+      font-weight: 600;
+    }
+  }
+  .hcm-tooltip-content {
+    @include pxRem(padding-right, 10);
+    @include pxRem(max-width, 350);
+  }
+}
+
+%hcm-tooltip-base-direction {
+  @include pxRem(border-top-width, $tooltip-height);
+  @include pxRem(border-left-width, $tooltip-height);
+  @include pxRem(border-right-width, $tooltip-height);
+  @include pxRem(border-bottom-width, $tooltip-height);
+  content: '';
+  border-style: solid;
+  background: transparent;
+  border-color: map-get($color, white-transparent);
+  position: absolute;
+}
+.hcm-tooltip-base-left,
+.hcm-tooltip-base-right {
+  transform: translateY(-25%);
+  &::before {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.hcm-tooltip-base-left::before {
+  @extend %hcm-tooltip-base-direction;
+  @include pxRem(right, $tooltip-shift);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.hcm-tooltip-base-bottom::before {
+  @extend %hcm-tooltip-base-direction;
+  @include pxRem(top, $tooltip-shift);
+  @include pxRem(left, $tooltip-move);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+.hcm-tooltip-base-top::before {
+  @extend %hcm-tooltip-base-direction;
+  @include pxRem(bottom, $tooltip-shift);
+  @include pxRem(left, $tooltip-move);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+.hcm-tooltip-base-right::before {
+  @extend %hcm-tooltip-base-direction;
+  @include pxRem(left, $tooltip-shift);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}

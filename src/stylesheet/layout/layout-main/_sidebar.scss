@@ -1,0 +1,432 @@
+.sidebar {
+  @include pxRem(width, $side-bar-width);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 13;
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.collapsible {
+    width: auto;
+    right: auto;
+
+    .btn-toggler {
+      display: flex;
+    }
+
+    .sidebar-right {
+      overflow-x: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &.collapsed {
+      .sidebar-right {
+        @include pxRem(width, #{map-get($layout, sidebar-collapsed)});
+        * {
+          display: none;
+        }
+      }
+    }
+
+    &+.main-container {
+      margin-left: calc(#{map-get($layout, office-nav)} + #{map-get($layout, sidebar-collapsed)});
+      width: calc(100vw - #{map-get($layout, office-nav)} - #{map-get($layout, sidebar-collapsed)});
+    }
+  }
+
+  &.sidebar-chat {
+    @include pxRem(width, map-get($layout, office-nav));
+    z-index: calc(#{map-get($z-index, personalized-view)} + 1);
+    .btn-toggler,
+    .sidebar-right {
+      display: none;
+    }
+  }
+
+  .btn-toggler {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    padding: 0;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background-color: map-get($color, bg-light-primary);
+  }
+
+  .navbar {
+    @include pxRem(width, map-get($layout, office-nav));
+    @include pxRem(padding, 20 0);
+    background-color: map-get($color, blue-dark);
+  }
+
+  .list-options {
+    @include flex-column-centered();
+    width: 100%;
+    .option-item {
+      @include pxRem(margin-top, 20);
+      @include flex-centered();
+      width: 100%;
+      .btn-icon {
+        @include pxRem(font-size, 20);
+        color: map-get($color, grey-d);
+      }
+    }
+    &.feature-options {
+      @include pxRem(margin-top, 120);
+      .btn-icon {
+        width: 100%;
+        height: 100%;
+      }
+      .option-item {
+        @include pxRem(height, 50);
+        margin-bottom: 0;
+        margin-top: 0;
+        &:hover,
+        &.active {
+          background-color: rgba(114, 105, 239, 0.2);
+          .btn-icon {
+            @include pxRem(font-size, 24);
+            color: map-get($color, grey-e);
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar-left {
+    .navbar-brand {
+      @include flex-centered();
+      cursor: pointer;
+    }
+  }
+
+  .sidebar-right {
+    @include pxRem(width, map-get($layout, room-nav));
+    border-left: 1px solid map-get($color, bg-light-secondary);
+    border-right: 1px solid map-get($color, bg-light-secondary);
+    position: relative;
+
+    .popover-wrapper {
+      max-width: 100%;
+    }
+
+    .room-member-counter {
+      color: map-get($color, heading);
+      background-color: map-get($color, bg-light-secondary);
+      .icon {
+        @include pxRem(margin-right, 5);
+        @include pxRem(font-size, map-get($font-size, sm));
+        color: map-get($color, disabled);
+      }
+    }
+  }
+
+  .sidebar-right-bottom {
+    max-height: calc(100vh - 112px);
+    overflow-y: scroll;
+  }
+
+  .office-name {
+    @include pxRem(font-size, 18);
+    @include pxRem(line-height, 22);
+    @include pxRem(padding, 20);
+    @include pxRem(width, map-get($layout, room-nav));
+    margin: 0;
+  }
+
+  .form-search {
+    @include pxRem(padding, 0 16 16);
+    .form-input {
+      @include pxRem(font-size, 14);
+    }
+  }
+
+  .room-item {
+    @include pxRem(margin-bottom, 7);
+  }
+
+  .room-item,
+  .other-members {
+    h6 {
+      display: flex;
+    }
+    .expand-icon {
+      @include pxRem(font-size, 10);
+      @include pxRem(margin-right, 10);
+      @include pxRem(padding-left, 20);
+      display: inline-flex;
+      align-items: center;
+      color: map-get($color, disabled);
+      cursor: pointer;
+      svg {
+        transform: rotate(0);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+    &.room-item-collapsed {
+      .expand-icon {
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+
+  .member-list {
+    @include pxRem(padding, 0 0 0 40);
+    @include animation(fade-in 0.5s forwards);
+    overflow: hidden;
+    height: auto;
+    .member-name {
+      @include pxRem(font-size, 14);
+      @include animation(fade-in 0.5s forwards);
+      @include ellipsis-special();
+      @include pxRem(margin-left, 8);
+      font-weight: 400;
+      max-width: 90%;
+      white-space: nowrap;
+      color: map-get($color, heading);
+    }
+    &.member-list-long {
+      @include pxRem(padding, 0 20 0 30);
+      .member-item {
+        width: 100%;
+      }
+      .popover-wrapper {
+        width: 100%;
+      }
+    }
+    &.member-list-collapsed {
+      height: 0;
+    }
+  }
+
+  .other-members {
+    @include pxRem(padding, 0 20 20 0);
+
+    h6 {
+      @include pxRem(font-size, 14);
+      @include pxRem(padding, 4 0);
+      white-space: nowrap;
+    }
+  }
+
+  .special-offer {
+    position: absolute;
+    @include pxRem(bottom, 60);
+    @include pxRem(left, 15);
+    @include pxRem(right, 15);
+
+    .offer-title {
+      @include pxRem(margin-bottom, 20);
+      @include pxRem(font-size, 16);
+    }
+
+    .txt-ct {
+      @include pxRem(font-size, 12);
+      letter-spacing: 0.025em;
+      @include pxRem(margin-bottom, 20);
+
+      .offer-content {
+        display: inline-block;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .btn-group {
+      margin-bottom: 0;
+    }
+  }
+
+  .btn-profile-setting {
+    position: relative;
+    height: auto;
+
+    .unverified-warning {
+      @include flex-centered();
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background: rgba(245, 247, 251, 0.8);
+      border-radius: 50%;
+      transition: all .2s ease;
+      color: map-get($color, warning);
+    }
+  }
+}
+
+.room-info {
+  @include pxRem(font-size, 14);
+  @include pxRem(padding, 8 20 8 0);
+  @include pxRem(margin-bottom, 5);
+  width: 100%;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &.active {
+    background: map-get($color, bg-light-tertiary);
+  }
+
+  &.active {
+    color: map-get($color, primary);
+    .expand-icon {
+      color: inherit;
+    }
+  }
+
+  .room-info-icon {
+    @include pxRem(font-size, map-get($font-size, xs));
+    line-height: 1;
+  }
+
+  .room-info-name {
+    @include pxRem(margin-left, 5);
+    @include ellipsis-special();
+    max-width: 90%;
+  }
+
+  span {
+    white-space: nowrap;
+  }
+}
+
+@include respond-between(large, large-pro) {
+  .sidebar {
+    width: calc(#{map-get($layout, office-nav-tablet)} + #{map-get($layout, room-nav-tablet)});
+
+    .navbar {
+      @include pxRem(width, map-get($layout, office-nav-tablet));
+    }
+
+    .sidebar-right {
+      @include pxRem(width, map-get($layout, room-nav-tablet));
+
+      .office-name {
+        @include pxRem(width, map-get($layout, room-nav-tablet));
+      }
+    }
+
+    &.collapsible {
+      &+.main-container {
+        margin-left: calc(#{map-get($layout, office-nav-tablet)} + #{map-get($layout, sidebar-collapsed)});
+        width: calc(100vw - #{map-get($layout, office-nav-tablet)} - #{map-get($layout, sidebar-collapsed)});
+      }
+    }
+  }
+}
+
+@include respond-below(medium) {
+  .sidebar {
+    @include pxRem(height, map-get($layout, header-mobile));
+    width: 100%;
+    flex-direction: column;
+    bottom: auto;
+
+    .office-name {
+      width: auto;
+    }
+
+    .change-language-menu {
+      margin-top: 0;
+
+      .btn-icon {
+        color: map-get($color, grey-e);
+      }
+    }
+
+    &.collapsible {
+      width: 100%;
+
+      &.collapsed {
+        .sidebar-right {
+          width: 100%;
+
+          .room-list {
+            display: flex;
+          }
+        }
+      }
+
+      &+.main-container {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+
+    .sidebar-left {
+      @include pxRem(height, map-get($layout, sidebar-left-mobile));
+      @include pxRem(padding, 0 15);
+      width: 100%;
+      flex-direction: row;
+
+      .btn-icon-more,
+      .office-name,
+      .icon {
+        display: flex;
+      }
+
+      .navbar-brand {
+        height: auto;
+      }
+
+      .office-name {
+        @include pxRem(font-size, 18);
+        @include ellipsis-special();
+        @include pxRem(padding, 0);
+        max-width: 80%;
+        color: map-get($color, grey-e);
+      }
+    }
+
+    .sidebar-left-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sidebar-right {
+      @include pxRem(height, map-get($layout, sidebar-right-mobile));
+      min-width: 100%;
+      border: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+
+      .room-list {
+        display: flex;
+        margin: 0;
+      }
+
+      .room-item {
+        margin: 0;
+      }
+    }
+
+    .sidebar-right-bottom {
+      margin-top: 0;
+      max-height: 100%;
+      overflow-y: hidden;
+    }
+  }
+
+  .room-info {
+    @include pxRem(padding, 0 15);
+    @include pxRem(height, 40);
+    margin: 0;
+    white-space: nowrap;
+
+    .room-info-name {
+      position: relative;
+      @include pxRem(padding-left, 10);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.member-preview {
+  @include flex-center-y();
+  .list-avatar {
+    display: flex;
+    @include pxRem(margin-left, 8);
+    .avatar {
+      @include pxRem(margin-left, -8);
+      position: relative;
+      border: 2px solid map-get($color, "white");
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    &.list-avatar-lg {
+      .avatar {
+        @include pxRem(min-width, map-get($avatar-size, wide));
+        @include pxRem(width, map-get($avatar-size, wide));
+        @include pxRem(min-height, map-get($avatar-size, wide));
+        @include pxRem(height, map-get($avatar-size, wide));
+      }
+    }
+    &.list-avatar-xs {
+      .avatar {
+        @include pxRem(min-width, map-get($avatar-size, xs));
+        @include pxRem(width, map-get($avatar-size, xs));
+        @include pxRem(min-height, map-get($avatar-size, xs));
+        @include pxRem(height, map-get($avatar-size, xs));
+      }
+    }
+  }
+  .user-count {
+    @include pxRem(font-size, 9);
+    @include flex-centered();
+    color: map-get($color, "white");
+    background-color: map-get($color, grey-f);
+    line-height: 0;
+  }
+}

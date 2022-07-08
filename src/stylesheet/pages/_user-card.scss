@@ -1,0 +1,62 @@
+.user-card {
+  .popover-text {
+    @include pxRem(padding, 10 40);
+  }
+  .media-body {
+    width: 100%;
+    .media-title {
+      @include pxRem(margin-bottom, 5);
+    }
+    .media-action {
+      @include pxRem(min-width, 60);
+    }
+    .tooltip-tip {
+      white-space: normal;
+    }
+  }
+  .user-info {
+    @include pxRem(padding, 16 25);
+    .member-avatar {
+      position: relative;
+      .status {
+        @include pxRem(top, 7);
+        position: absolute;
+        right: 0;
+        border: 1px solid map-get($color, "white");
+      }
+    }
+    .email {
+      @include pxRem(margin-bottom, 10);
+    }
+  }
+  .card-description {
+    @include pxRem(font-size, map-get($font-size, xs));
+    @include ellipsis-special(1);
+    @include flex-center-y();
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .meeting-title {
+    @include pxRem(margin-bottom, 8);
+  }
+  .box-wrapper {
+    @include pxRem(margin, 0 25 16);
+    @include pxRem(padding, 20 16);
+    @include pxRem(max-width, 320);
+    overflow: unset;
+    .media-body {
+      align-items: flex-start;
+    }
+    .media-content {
+      @include pxRem(margin-right, 15);
+      min-width: calc(100% - 102px);
+    }
+    .media-icon {
+      @include pxRem(min-width, 16);
+      @include pxRem(margin, 2 15 0 0);
+    }
+    .btn {
+      @include pxRem(min-width, 56);
+    }
+  }
+}

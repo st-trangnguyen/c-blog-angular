@@ -1,0 +1,98 @@
+.tox {
+  * {
+    color: map-get($color, heading) !important;
+  }
+}
+.tox-tinymce-aux {
+  z-index: 11000 !important;
+}
+.tox-tinymce {
+  @include pxRem(border-radius, 5 !important);
+  border-color: map-get($color, bg-light-secondary) !important;
+}
+.toolbar__primary {
+  background: none !important;
+  border-bottom: 1px solid map-get($color, bg-light-secondary) !important;
+}
+.tox-toolbar__primary {
+  border-top: 1px solid map-get($color, bg-light-secondary) !important;
+  .tox-tbtn {
+    @include pxRem(margin-right, 3 !important);
+  }
+}
+.tox-tbtn {
+  &.tox-tbtn--enabled,
+  &:hover {
+    background: map-get($color, bg-light-secondary) !important;
+  }
+}
+.tox-notification {
+  display: none !important;
+}
+
+.tox-button {
+  color: map-get($color, "white") !important;
+  background: map-get($color, primary) !important;
+  border-color: map-get($color, primary) !important;
+  border-radius: 5px !important;
+  &:hover {
+    background: map-get($color, bg-hover) !important;
+  }
+  &.tox-button--secondary {
+    color: map-get($color, primary) !important;
+    background: map-get($color, "white") !important;
+    border-color: map-get($color, primary) !important;
+  }
+  &.tox-button--icon {
+    background: transparent !important;
+    border-color: transparent !important;
+  }
+}
+
+.tox-dialog {
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+.tox-label {
+  @include pxRem(font-size, 12 !important);
+  @include pxRem(margin-bottom, 8 !important);
+}
+
+.tox-textfield,
+.tox-listbox--select {
+  border-radius: 5px !important;
+  border: 1px solid map-get($color, grey-f) !important;
+}
+
+.tox-form__group {
+  @include pxRem(margin-bottom, 16 !important);
+}
+
+.tox-dialog__footer {
+  border-top: 1px solid map-get($color, grey-c) !important;
+}
+
+.tox-icon {
+  @include pxRem(font-size, 16 !important);
+  color: map-get($color, grey-a) !important;
+  svg {
+    fill: map-get($color, grey-a) !important;
+  }
+  path {
+    color: map-get($color, grey-a) !important;
+  }
+}
+
+@include respond-below(large-pro) {
+  .tox-tbtn {
+    &:focus,
+    &:active,
+    &:hover {
+      background: transparent !important;
+    }
+    &.tox-tbtn--enabled {
+      background: map-get($color, bg-grey-a) !important;
+    }
+  }
+}
